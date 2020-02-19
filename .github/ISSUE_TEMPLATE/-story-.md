@@ -1,7 +1,7 @@
 ---
 name: "[STORY]"
 about: 'This is a story '
-title: ''
+title: '[STORY] As ... "change me"'
 labels: STORY
 assignees: ''
 
