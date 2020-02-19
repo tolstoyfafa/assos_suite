@@ -1,27 +1,21 @@
 # Introduction
 
-### Write something nice here!
-
->First off, thank you for considering contributing to Active Admin. It's people like you that make Active Admin such a great tool.
+>First off, thank you for considering contributing to assos_suite project.
 
 [source: [Active Admin](https://github.com/activeadmin/activeadmin/blob/master/CONTRIBUTING.md)] **Need more inspiration?** [1] [Read The Docs](http://read-the-docs.readthedocs.org/en/latest/contribute.html) [2] [Mustache.js](https://github.com/janl/mustache.js/#contributing)
 
-### Tell them why they should read your guidelines.
+### Why you should read our guidelines.
 
 >Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
-[source: [Hoodie](https://github.com/hoodiehq/hoodie/blob/master/CONTRIBUTING.md)]
-
-### Explain what kinds of contributions you are looking for.
+### What we search for.
 
 Keep an open mind! Improving documentation, bug triaging, or writing tutorials are all examples of helpful contributions that mean less work for you.
 
-> Elasticsearch is an open source project and we love to receive contributions from our community — you! There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into Elasticsearch itself.
-
-[source: [Elasticsearch](https://github.com/elastic/elasticsearch/blob/master/CONTRIBUTING.md)] **Need more inspiration?** [1] [Devise](https://github.com/plataformatec/devise/wiki/Contributing) [2] [Geocoder](https://github.com/alexreisner/geocoder#known-issues) (“known issues”)
+> Assosuite is an open source project and we love to receive contributions from our community — you! There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into Assosuite itself.
 
 ### Explain contributions you are NOT looking for (if any).
-
+**WIP**
 Again, defining this up front means less work for you. If someone ignores your guide and submits something you don’t want, you can simply close it and point to your policy.
 
 > Please, don't use the issue tracker for [support questions]. Check whether the #pocoo IRC channel on Freenode can help with your issue. If your problem is not strictly Werkzeug or Flask specific, #python is generally more active. Stack Overflow is also worth considering.
@@ -30,6 +24,7 @@ Again, defining this up front means less work for you. If someone ignores your g
 
 # Ground Rules
 ### Set expectations for behavior (yours, and theirs).
+**WIP**
 This includes not just how to communicate with others (being respectful, considerate, etc) but also technical responsibilities (importance of testing, project dependencies, etc). Mention and link to your code of conduct, if you have one.
 
 > Responsibilities
@@ -43,6 +38,7 @@ This includes not just how to communicate with others (being respectful, conside
 [source: [cookiecutter](https://github.com/audreyr/cookiecutter/blob/master/CONTRIBUTING.rst)] **Need more inspiration?** [1] [Celery](https://github.com/celery/celery/blob/master/CONTRIBUTING.rst#community-code-of-conduct) [2] [geocoder](https://github.com/alexreisner/geocoder#contributing)
 
 # Your First Contribution
+**WIP**
 Help people who are new to your project understand where they can be most helpful. This is also a good time to let people know if you follow a label convention for flagging beginner issues.
 
 > Unsure where to begin contributing to Atom? You can start by looking through these beginner and help-wanted issues:
@@ -53,6 +49,7 @@ Help people who are new to your project understand where they can be most helpfu
 [source: [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#your-first-code-contribution)] **Need more inspiration?** [1] [Read the Docs](http://docs.readthedocs.org/en/latest/contribute.html#contributing-to-development) [2] [Django](https://docs.djangoproject.com/en/dev/internals/contributing/new-contributors/#first-steps) (scroll down to "Guidelines" as well)
 
 ### Bonus points: Add a link to a resource for people who have never contributed to open source before.
+**WIP**
 Here are a couple of friendly tutorials you can include: http://makeapullrequest.com/ and http://www.firsttimersonly.com/
 
 > Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
@@ -66,6 +63,7 @@ As a side note, it helps to use newcomer-friendly language throughout the rest o
 >If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
 
 # Getting started
+**WIP**
 ### Give them a quick walkthrough of how to submit a contribution.
 How you write this is up to you, but some things you may want to include:
 
@@ -85,7 +83,8 @@ How you write this is up to you, but some things you may want to include:
 
 [source: [Requirejs](http://requirejs.org/docs/contributing.html)] **Need more inspiration?** [1] [Active Admin](https://github.com/activeadmin/activeadmin/blob/master/CONTRIBUTING.md#1-where-do-i-go-from-here) [2] [Node.js](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md#code-contributions) [3] [Ember.js](https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md#pull-requests)
 
-### If you have a different process for small or "obvious" fixes, let them know.
+### If you have a different process for small or "obvious" fixes, let them know.*
+**WIP**
 
 > Small contributions such as fixing spelling errors, where the content is small enough to not be considered intellectual property, can be submitted by a contributor as a patch, without a CLA.
 >
@@ -102,6 +101,7 @@ How you write this is up to you, but some things you may want to include:
 
 # How to report a bug
 ### Explain security disclosures first!
+**WIP**
 At bare minimum, include this sentence:
 > If you find a security vulnerability, do NOT open an issue. Email XXXX instead.
 
