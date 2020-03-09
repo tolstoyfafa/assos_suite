@@ -1,6 +1,6 @@
 ---
 name: Tracking issue
-about: Use this template for tracking new features.
+about: Use this template for tracking PR related to bugfixes.
 title: "[DATE]: [FEATURE NAME]"
 labels: bug
 assignees: ''
@@ -8,3 +8,22 @@ assignees: ''
 ---
 
 ### issue tempalte for bugfix
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+**API**
+```bash
+http://localhost/api/assosuite/...
+```
+
+
+
