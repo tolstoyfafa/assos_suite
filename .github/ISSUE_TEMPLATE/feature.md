@@ -1,16 +1,24 @@
 ---
-name: 'Issue for Feature '
-about: 'This is an issue temp to discribe a feature that is devlopped '
-title: "[FEATURE] : "
-labels: 'enhancement','FEATURE'
-assignees: tolstoyfafa
+name: Tracking issue
+about: Use this template for tracking PR related to bugfixes.
+title: "[DATE]: [FEATURE NAME]"
+labels: enhancement
+assignees: 'tolstoyfafa'
+projects: 1
 
 ---
 
 Related story: ==> 
-**Backend**
-**Frontend**
+
 ## Description:
-- 
--
--
+- [ ] task 
+- [ ] task 
+- [ ] task 
+- [ ] task 
+- [ ] task 
+## API
+```curl
+/assosuite/api/
+```
+- [ ] Unit Tests 
+
