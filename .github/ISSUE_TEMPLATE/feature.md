@@ -1,7 +1,7 @@
 ---
-name: Tracking issue
+name: feature issue
 about: Use this template for tracking PR related to bugfixes.
-title: "[DATE]: [FEATURE NAME]"
+title: "[FEATURE]"
 labels: enhancement
 assignees: 'tolstoyfafa'
 projects: 1
