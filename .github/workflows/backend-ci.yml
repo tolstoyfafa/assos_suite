@@ -1,0 +1,40 @@
+name: BackendCI 
+on: [push]
+jobs:
+  compile:
+    name: compile backend code source 
+    runs-on: ubuntu-latest
+    steps:
+      - name: copy resources of application with checkout action
+        uses: actions/checkout@v2
+      - name: use java setup
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11' # The JDK version to make available on the path.
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+          run: mvn -f backend/pom.xml clean compile
+
+  unit-tests:
+    name: backend unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: copy resources of application with checkout action
+        uses: actions/checkout@v2
+      - name: use cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: use java setup
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11' # The JDK version to make available on the path.
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+      - name: launch tests with maven
+        run: mvn -f backend/pom.xml test
+        
+
