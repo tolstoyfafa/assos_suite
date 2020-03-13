@@ -1,0 +1,11 @@
+FROM maven:3.6.0 AS build
+MAINTAINER <AssosSuite@gmail.com>
+COPY src /build/src
+COPY pom.xml /build
+WORKDIR /build
+RUN mvn clean package -DskipTests=true
+EXPOSE 8080
+FROM adoptopenjdk/openjdk11:latest
+COPY --from=build /build/target/*.jar /usr/local/lib/assosuite.jar
+WORKDIR /usr/app
+ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar"]
