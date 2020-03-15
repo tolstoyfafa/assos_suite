@@ -1,9 +1,9 @@
 package com.motus.assosuite.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.motus.assosuite.models.Adherent;
 
-public interface AdherentRepository extends CrudRepository<Adherent, String>{
+public interface AdherentRepository extends MongoRepository<Adherent, String>{
 
 }
