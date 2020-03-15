@@ -1,5 +1,7 @@
 package com.motus.assosuite.rest.impl;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, value = "/")
 	@Override
-	public Adherent create(@RequestBody Adherent adherent) {
+	public Adherent create(@RequestBody @Valid Adherent adherent) {
 		return service.create(adherent);
 	}
 }

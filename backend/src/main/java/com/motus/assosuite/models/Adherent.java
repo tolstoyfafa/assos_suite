@@ -3,6 +3,9 @@ package com.motus.assosuite.models;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
+
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import com.motus.assosuite.enums.FamilialSituationType;
@@ -11,40 +14,51 @@ import com.motus.assosuite.enums.GenderType;
 public class Adherent {
 
 	@Id
-	private Long id;
-	
-	private UUID uuid;
+	private ObjectId id;
 
+	@NotNull
+	private String uuid;
+
+	@NotNull
 	private String firstName;
 
+	@NotNull
 	private String lastName;
 
+	@NotNull
 	private Date birthDay;
 
+	@NotNull
 	private String mail;
 
+	@NotNull
 	private String phone;
 
+	@NotNull
 	private FamilialSituationType familialSituation;
-	
+
+	@NotNull
 	private GenderType genderType;
 
+	@NotNull
 	private Address address;
 
+	@NotNull
 	private Date creationDate;
 
+	@NotNull
 	private Date modificationDate;
-	
 
 	public Adherent() {
 		super();
+		this.uuid = UUID.randomUUID().toString();
 	}
 
-	public Adherent(UUID uuid, String firstName, String lastName, Date birthDay, String mail, String phone,
+	public Adherent(String firstName, String lastName, Date birthDay, String mail, String phone,
 			FamilialSituationType familialSituation, GenderType genderType, Address address, Date creationDate,
 			Date modificationDate) {
 		super();
-		this.uuid = uuid;
+		this.uuid = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDay = birthDay;
@@ -57,11 +71,11 @@ public class Adherent {
 		this.modificationDate = modificationDate;
 	}
 
-	public Long getId() {
+	public ObjectId getId() {
 		return id;
 	}
 
-	public UUID getUuid() {
+	public String getUuid() {
 		return uuid;
 	}
 
@@ -101,11 +115,11 @@ public class Adherent {
 		return modificationDate;
 	}
 
-	public void setId(Long id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
-	public void setUuid(UUID uuid) {
+	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
 
