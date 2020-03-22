@@ -31,7 +31,7 @@ public class MongoConfigTests {
 
 	@Bean
 	public MongoDbFactory mongoDbFactory(MongoClient mongoClient) {
-		return new SimpleMongoDbFactory(mongoClient, "test");
+		return new SimpleMongoDbFactory(mongoClient, "assosuite-test");
 	}
 
 	@Bean(destroyMethod = "shutdown")
