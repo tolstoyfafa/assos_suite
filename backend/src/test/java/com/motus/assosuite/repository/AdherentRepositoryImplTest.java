@@ -1,7 +1,11 @@
 package com.motus.assosuite.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.AfterEach;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +18,30 @@ import com.motus.assosuite.models.Adherent;
 @SpringBootTest
 @Import(MongoConfigTests.class)
 public class AdherentRepositoryImplTest {
-	
-    @Autowired 
-    private AdherentRepository repository;
 
-    @BeforeEach
-    public void setUp() {
-        // initialize your repository with some test data
-        repository.save(new Adherent());
-    }
-    
-    @Test
-    public void test() {
-    	assertEquals(1, 1);
-    }
+	Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private AdherentRepository repository;
+
+	@BeforeEach
+	public void setUp() {
+		logger.info("======BEGIN_SETUP======");
+		logger.info("======END_SETUP======");
+	}
+
+	@AfterEach
+	public void tearDown() {
+		logger.info("======BEGIN_SETUP======");
+		logger.info("======END_SETUP======");
+	}
+
+	@Test
+	public void test() {
+		logger.info("======BEGIN_TEST======");
+		Adherent adherent = repository.save(new Adherent());
+		assertNotNull(adherent, "adhrent was not created");
+		logger.info("======END_TEST======");
+	}
 
 }
