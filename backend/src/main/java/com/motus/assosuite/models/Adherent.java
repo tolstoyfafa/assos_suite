@@ -11,6 +11,10 @@ import org.springframework.data.annotation.Id;
 import com.motus.assosuite.enums.FamilialSituationType;
 import com.motus.assosuite.enums.GenderType;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "Adherent entity, contains all required informations about a member of association,"
+		+ "the class is serilized and stocked on mongodb with same structure", value = "Adherent")
 public class Adherent {
 
 	@Id
