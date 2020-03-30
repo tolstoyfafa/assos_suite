@@ -9,4 +9,8 @@ public interface AdherentService {
 	Adherent create(Adherent adherent);
 
 	List<Adherent> findAll();
+
+	Adherent update(Adherent adherent, String uuid);
+
+	Adherent find(String uuid);
 }
