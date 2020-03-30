@@ -6,4 +6,6 @@ import com.motus.assosuite.models.Adherent;
 
 public interface AdherentRepository extends MongoRepository<Adherent, String>{
 
+	Adherent findByUuid(String uuid);
+
 }

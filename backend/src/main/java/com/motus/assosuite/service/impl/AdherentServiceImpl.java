@@ -29,4 +29,15 @@ public class AdherentServiceImpl implements AdherentService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Adherent update(Adherent adherent , String uuid) {
+		
+		return repository.save(adherent);
+	}
+
+	@Override
+	public Adherent find(String uuid) {
+		return repository.findByUuid(uuid);
+	}
+
 }
