@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motus.assosuite.enums.FamilialSituationType;
 import com.motus.assosuite.enums.GenderType;
 
@@ -18,6 +19,7 @@ import io.swagger.annotations.ApiModel;
 public class Adherent {
 
 	@Id
+	@JsonIgnore
 	private ObjectId id;
 
 	@NotNull
@@ -36,7 +38,7 @@ public class Adherent {
 	private String mail;
 
 	@NotNull
-	private String phone;
+	private Integer phone;
 
 	@NotNull
 	private FamilialSituationType familialSituation;
@@ -47,20 +49,19 @@ public class Adherent {
 	@NotNull
 	private Address address;
 
-	@NotNull
 	private Date creationDate;
 
-	@NotNull
 	private Date modificationDate;
 
 	public Adherent() {
 		super();
 		this.uuid = UUID.randomUUID().toString();
+		this.creationDate = new Date();
+		this.modificationDate = new Date();
 	}
 
-	public Adherent(String firstName, String lastName, Date birthDay, String mail, String phone,
-			FamilialSituationType familialSituation, GenderType genderType, Address address, Date creationDate,
-			Date modificationDate) {
+	public Adherent(String firstName, String lastName, Date birthDay, String mail, @NotNull Integer phone,
+			FamilialSituationType familialSituation, GenderType genderType, Address address) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 		this.firstName = firstName;
@@ -71,8 +72,8 @@ public class Adherent {
 		this.familialSituation = familialSituation;
 		this.genderType = genderType;
 		this.address = address;
-		this.creationDate = creationDate;
-		this.modificationDate = modificationDate;
+		this.creationDate = new Date();
+		this.modificationDate = new Date();
 	}
 
 	public ObjectId getId() {
@@ -99,7 +100,7 @@ public class Adherent {
 		return mail;
 	}
 
-	public String getPhone() {
+	public Integer getPhone() {
 		return phone;
 	}
 
@@ -143,7 +144,7 @@ public class Adherent {
 		this.mail = mail;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(@NotNull Integer phone) {
 		this.phone = phone;
 	}
 
