@@ -7,7 +7,9 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,9 +45,9 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 			produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Find an adhrent by its uuid")
 	@Override
-	public Adherent find(@PathVariable String uuid) {
+	public ResponseEntity<Adherent> find(@PathVariable String uuid) {
 		LOGGER.debug("find and adherent");
-		return service.find(uuid);
+		return new ResponseEntity<Adherent>(service.find(uuid), HttpStatus.OK);
 	}
 	@PostMapping(
 			path ="",
@@ -53,9 +55,9 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 			produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Add an adhrent")
 	@Override
-	public Adherent create(@RequestBody @Valid Adherent adherent) {
+	public ResponseEntity<Adherent> create(@RequestBody @Valid Adherent adherent) {
 		LOGGER.debug("Create and adherent {}", adherent.toString());
-		return service.create(adherent);
+		return new ResponseEntity<Adherent>(service.create(adherent), HttpStatus.CREATED);
 	}
 
 	@GetMapping(
@@ -63,9 +65,9 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 			produces = {MediaType.APPLICATION_JSON_VALUE} )
 	@ApiOperation(value = "Recover all adhrents only for admin SUPERADMIN")
 	@Override
-	public List<Adherent> findAll() {
+	public ResponseEntity<List<Adherent>> findAll() {
 		LOGGER.debug("Fetching all adherents");
-		return service.findAll();
+		return new ResponseEntity<List<Adherent>>(service.findAll(), HttpStatus.OK);
 	}
 
 	@PutMapping(
@@ -73,10 +75,10 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 			produces = {MediaType.APPLICATION_JSON_VALUE} )
 	@ApiOperation(value = "Full Update of an adherent only for admin SUPERADMIN")
 	@Override
-	public Adherent udpate(
+	public ResponseEntity<Adherent> udpate(
 			@RequestBody Adherent adherent,
 			@PathVariable String uuid) {
-		return service.update(adherent, uuid);
+		return new ResponseEntity<Adherent>(service.update(adherent, uuid), HttpStatus.CREATED);
 	}
 
 }

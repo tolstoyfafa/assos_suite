@@ -2,16 +2,18 @@ package com.motus.assosuite.rest;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.motus.assosuite.models.Adherent;
 
 public interface AdherentRestController {
 	
-	Adherent find(String uuid);
+	ResponseEntity<Adherent> find(String uuid);
 
-	Adherent create(Adherent adherent);
+	ResponseEntity<Adherent> create(Adherent adherent);
 
-	List<Adherent> findAll();
+	ResponseEntity<List<Adherent>> findAll();
 
-	Adherent udpate(Adherent adherent, String uuid);
+	ResponseEntity<Adherent> udpate(Adherent adherent, String uuid);
 
 }
