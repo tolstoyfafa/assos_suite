@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.motus.assosuite.api.exceptions.BusinessException;
+import com.motus.assosuite.enums.AssosBusinessErrorCode;
 import com.motus.assosuite.models.Adherent;
 import com.motus.assosuite.repository.AdherentRepository;
 import com.motus.assosuite.service.AdherentService;
@@ -30,14 +32,18 @@ public class AdherentServiceImpl implements AdherentService {
 	}
 
 	@Override
-	public Adherent update(Adherent adherent , String uuid) {
-		
+	public Adherent update(Adherent adherent, String uuid) {
+
 		return repository.save(adherent);
 	}
 
 	@Override
 	public Adherent find(String uuid) {
-		return repository.findByUuid(uuid);
+		Adherent adherent = repository.findByUuid(uuid);
+		if (adherent == null) {
+			throw new BusinessException("Adherent not found in DB", AssosBusinessErrorCode.ADHERENT_NOT_FOUND);
+		}
+		return adherent;
 	}
 
 }
