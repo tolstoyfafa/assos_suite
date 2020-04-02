@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,12 +24,18 @@ import com.motus.assosuite.enums.RoleType;
  */
 public class Admin implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -644713787682430702L;
+
 	@Id
 	private ObjectId id;
 
 	private String uuid;
 
 	@Email
+	@Indexed(unique = true)
 	private String mail;
 
 	private String password;

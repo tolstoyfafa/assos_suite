@@ -6,5 +6,7 @@ import com.motus.assosuite.models.Admin;
 
 public interface AdminRepository extends MongoRepository<Admin, String> {
 
-	Admin findByUuid();
+	Admin findByUuid(String uuid);
+
+	Admin findByMail(String mail);
 }

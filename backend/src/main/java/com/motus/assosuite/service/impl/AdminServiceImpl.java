@@ -1,5 +1,8 @@
 package com.motus.assosuite.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +21,12 @@ import com.motus.assosuite.service.AdminService;
 public class AdminServiceImpl implements AdminService {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	private final AdminRepository repository;
 
 	private String adminMail = "adminstrator@assosuite.com";
+	private List<RoleType> roles = Arrays.asList(RoleType.SUPERADMIN);
 	private String password;
 
 	@Autowired
@@ -32,13 +36,19 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void init() {
-		logger.info("======BEGIN INIT SERVICE OF ADMIN");
-
-		repository.save(new Admin(adminMail, RoleType.SUPERADMIN));
-		logger.info("======END INIT SERVICE OF ADMIN");
+		logger.info("======BEGIN INIT SERVICE WITH ADMIN CREDENTIALS======\n"
+				+ "==========================================");
+		if (repository.findByMail(adminMail) == null) {
+			logger.info("======= Saving admin credentials ...");
+			repository.save(new Admin(adminMail, roles));
+		} else {
+			logger.info("ADMIN EVENS EXISTS NO NEED TO INIT");
+		}
+		logger.info("======END INIT SERVICE WITH ADMIN CREDENTIALS\n"
+				+ "==========================================");
 	}
 
-	protected Admin getAdmin() {
-		return repository.findByUuid();
+	protected Admin getAdmin(String uuid) {
+		return repository.findByUuid(uuid);
 	}
 }
