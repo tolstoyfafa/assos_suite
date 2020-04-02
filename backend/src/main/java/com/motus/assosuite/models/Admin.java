@@ -1,11 +1,17 @@
 package com.motus.assosuite.models;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.validation.constraints.Email;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.motus.assosuite.enums.RoleType;
 
@@ -15,7 +21,7 @@ import com.motus.assosuite.enums.RoleType;
  * @author fbordjah
  *
  */
-public class Admin {
+public class Admin implements UserDetails {
 
 	@Id
 	private ObjectId id;
@@ -27,20 +33,20 @@ public class Admin {
 
 	private String password;
 
-	private RoleType roleType;
+	private List<RoleType> roles;
 
 	public Admin() {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 	}
 
-	public Admin(@Email String mail, RoleType roleType) {
+	public Admin(@Email String mail, List<RoleType> roles) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 		this.mail = mail;
-		this.roleType = roleType;
+		this.roles = roles;
 	}
-	
+
 	public ObjectId getId() {
 		return id;
 	}
@@ -61,8 +67,8 @@ public class Admin {
 		return password;
 	}
 
-	public RoleType getRoleType() {
-		return roleType;
+	public List<RoleType> getRoleType() {
+		return roles;
 	}
 
 	public void setUuid(String uuid) {
@@ -77,13 +83,46 @@ public class Admin {
 		this.password = password;
 	}
 
-	public void setRoleType(RoleType roleType) {
-		this.roleType = roleType;
+	public void setRoleType(List<RoleType> roleType) {
+		this.roles = roleType;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
+	}
+
+	@Override
+	public String getUsername() {
+		return mail;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", uuid=" + uuid + ", mail=" + mail + ", roleType=" + roleType + "]";
+		return "Admin [id=" + id + ", uuid=" + uuid + ", mail=" + mail + ", roles=" + roles + "]";
 	}
-
 }
