@@ -2,6 +2,7 @@ package com.motus.assosuite.service;
 
 import java.util.List;
 
+import com.motus.assosuite.api.exceptions.BusinessException;
 import com.motus.assosuite.models.Adherent;
 
 public interface AdherentService {
@@ -12,5 +13,5 @@ public interface AdherentService {
 
 	Adherent update(Adherent adherent, String uuid);
 
-	Adherent find(String uuid);
+	Adherent find(String uuid) throws BusinessException;
 }
