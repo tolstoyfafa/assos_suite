@@ -47,7 +47,7 @@ public class Admin implements UserDetails {
 		this.uuid = UUID.randomUUID().toString();
 	}
 
-	public Admin(@Email String mail, List<RoleType> roles) {
+	public Admin(String mail, List<RoleType> roles) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 		this.mail = mail;
