@@ -1,5 +1,6 @@
 package com.motus.assosuite.models;
 
+import java.nio.file.attribute.UserPrincipal;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +23,7 @@ import com.motus.assosuite.enums.RoleType;
  * @author fbordjah
  *
  */
-public class Admin implements UserDetails {
+public class Admin implements UserDetails, UserPrincipal{
 
 	/**
 	 * 
@@ -131,5 +132,11 @@ public class Admin implements UserDetails {
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", uuid=" + uuid + ", mail=" + mail + ", roles=" + roles + "]";
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return mail;
 	}
 }
