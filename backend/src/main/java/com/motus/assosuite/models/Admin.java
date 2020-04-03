@@ -48,11 +48,12 @@ public class Admin implements UserDetails, UserPrincipal{
 		this.uuid = UUID.randomUUID().toString();
 	}
 
-	public Admin(String mail, List<RoleType> roles) {
+	public Admin(String mail, String password ,List<RoleType> roles) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 		this.mail = mail;
 		this.roles = roles;
+		this.password = password;
 	}
 
 	public ObjectId getId() {
