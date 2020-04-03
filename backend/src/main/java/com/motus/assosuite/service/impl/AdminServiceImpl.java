@@ -6,6 +6,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.motus.assosuite.enums.RoleType;
 import com.motus.assosuite.models.Admin;
@@ -44,11 +46,16 @@ public class AdminServiceImpl implements AdminService {
 		} else {
 			logger.info("ADMIN EVENS EXISTS NO NEED TO INIT");
 		}
-		logger.info("======END INIT SERVICE WITH ADMIN CREDENTIALS\n"
-				+ "==========================================");
+		logger.info("======END INIT SERVICE WITH ADMIN CREDENTIALS\n" + "==========================================");
 	}
 
 	protected Admin getAdmin(String uuid) {
 		return repository.findByUuid(uuid);
 	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return repository.findByMail(username);
+	}
+
 }
