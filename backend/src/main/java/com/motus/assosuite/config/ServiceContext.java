@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.motus.assosuite.repository.AdminRepository;
-import com.motus.assosuite.service.AdminService;
-import com.motus.assosuite.service.impl.AdminServiceImpl;
+import com.motus.assosuite.service.InitService;
+import com.motus.assosuite.service.impl.InitServiceImpl;
 
 @Configuration
 public class ServiceContext {
@@ -13,7 +13,7 @@ public class ServiceContext {
 	private AdminRepository repository;
 
 	@Bean(initMethod = "init")
-	public AdminService adminService() {
-		return new AdminServiceImpl(repository);
+	public InitService initService() {
+		return new InitServiceImpl(repository);
 	}
 }

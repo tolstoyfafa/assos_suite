@@ -27,26 +27,9 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private final AdminRepository repository;
 
-	private String adminMail = "adminstrator@assosuite.com";
-	private List<RoleType> roles = Arrays.asList(RoleType.SUPERADMIN);
-	private String password;
-
 	@Autowired
 	public AdminServiceImpl(AdminRepository repository) {
 		this.repository = repository;
-	}
-
-	@Override
-	public void init() {
-		logger.info("======BEGIN INIT SERVICE WITH ADMIN CREDENTIALS======\n"
-				+ "==========================================");
-		if (repository.findByMail(adminMail) == null) {
-			logger.info("======= Saving admin credentials ...");
-			repository.save(new Admin(adminMail, roles));
-		} else {
-			logger.info("ADMIN EVENS EXISTS NO NEED TO INIT");
-		}
-		logger.info("======END INIT SERVICE WITH ADMIN CREDENTIALS\n" + "==========================================");
 	}
 
 	protected Admin getAdmin(String uuid) {
