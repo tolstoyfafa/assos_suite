@@ -1,21 +1,22 @@
 package com.motus.assosuite.security;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
-import com.motus.assosuite.enums.RoleType;
 import com.motus.assosuite.models.Admin;
-import com.sun.security.auth.UserPrincipal;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
+@Component
 public class JwtProvider {
 
 	private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
@@ -27,8 +28,14 @@ public class JwtProvider {
 
 	@Value("${app.jwtExpirationInMs}")
 	private long jwtExpirationInMs;
-	
-	public String generateToken(Authentication authentication, List<RoleType> roles) {
+
+	@Value("${app.audiance}")
+	private String audiance;
+
+	@Value("${app.issuer}")
+	private String issuer;
+
+	public String generateToken(Authentication authentication) {
 		logger.info("===================>>> Generating JWT TOKEN FOR ... {}", authentication.getName());
 		long now = new Date().getTime();
 		Admin admin = (Admin) authentication.getPrincipal();
@@ -37,8 +44,21 @@ public class JwtProvider {
 		claims.put(ROLES_KEY, admin.getAuthorities());
 		claims.setIssuedAt(new Date());
 		claims.setIssuer("ASSOSUITE_ISSUER");
-		claims.setExpiration( new Date(now + jwtExpirationInMs));
-		return Jwts.builder().setClaims(claims).compact();
+		claims.setExpiration(new Date(now + jwtExpirationInMs));
+		return Jwts.builder().setClaims(claims)
+				.signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()), SignatureAlgorithm.HS512).compact();
 	}
 
+	/**
+	 * recover the Admin mail from the decoded token
+	 * 
+	 * @param token
+	 * @return
+	 */
+	public String getMail(String token) {
+		Jws<Claims> claims = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes())).build()
+				.parseClaimsJws(token);
+		return claims.getBody().getSubject();
+
+	}
 }
