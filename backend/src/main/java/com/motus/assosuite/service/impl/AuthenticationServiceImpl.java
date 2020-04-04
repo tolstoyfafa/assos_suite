@@ -24,14 +24,16 @@ import com.motus.assosuite.service.AuthenticationService;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-
+	
+	@Autowired
 	private final AuthenticationManager authenticationManager;
-
+	
+	@Autowired
 	private final AdminService adminService;
 	
+	@Autowired
 	private JwtUtils utils;
 
-	@Autowired
 	public AuthenticationServiceImpl(AuthenticationManager authenticationManager, AdminService adminService) {
 		super();
 		this.authenticationManager = authenticationManager;
