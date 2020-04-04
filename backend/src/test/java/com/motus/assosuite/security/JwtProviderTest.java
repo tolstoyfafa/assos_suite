@@ -25,7 +25,7 @@ public class JwtProviderTest {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private JwtProvider provider;
+	private JwtUtils provider;
 	
 	@BeforeEach
 	public void setUp() {
