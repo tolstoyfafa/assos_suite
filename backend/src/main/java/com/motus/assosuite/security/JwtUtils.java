@@ -35,10 +35,9 @@ public class JwtUtils {
 	@Value("${app.issuer}")
 	private String issuer;
 
-	public String generateToken(Authentication authentication) {
-		logger.info("Generating JWT TOKEN FOR ... {}", authentication.getName());
+	public String generateToken(Admin admin) {
+		logger.info("Generating JWT TOKEN FOR ... {}", admin.getName());
 		long now = new Date().getTime();
-		Admin admin = (Admin) authentication.getPrincipal();
 		Claims claims = Jwts.claims();
 		claims.setSubject(admin.getMail());
 		claims.put(ROLES_KEY, admin.getAuthorities());

@@ -1,9 +1,9 @@
 package com.motus.assosuite.service;
 
-import com.motus.assosuite.models.Admin;
+import com.motus.assosuite.api.payloads.AuthDto;
 
 public interface AuthenticationService {
 	
-	String authenticateJwt(Admin admin);
+	String authenticateJwt(AuthDto admin);
 
 }

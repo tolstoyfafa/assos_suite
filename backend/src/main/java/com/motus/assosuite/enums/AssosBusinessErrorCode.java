@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 public enum AssosBusinessErrorCode {
 	
 	ADHERENT_NOT_FOUND(100, HttpStatus.NOT_FOUND),
-	ADHERENT_EXISTS(101, HttpStatus.BAD_REQUEST);
+	ADHERENT_EXISTS(101, HttpStatus.BAD_REQUEST),
+	ADMIN_BAD_CREDENTIALS(200, HttpStatus.UNAUTHORIZED),
+	ADMIN_NOT_FOUND(201, HttpStatus.NOT_FOUND);
 	
 	private final int code;
 	private final HttpStatus status;

@@ -45,7 +45,7 @@ public class JwtProviderTest {
 	@Test
 	public void testGeneration() {
 		Admin admin = adminRepository.getDefault();
-		String token = provider.generateToken(new UsernamePasswordAuthenticationToken(admin, admin.getPassword(), admin.getAuthorities())); 
+		String token = provider.generateToken(admin); 
 		assertNotNull(token);
 		assertEquals(provider.getMail(token), admin.getMail());
 	logger.info("=============> {}", token);

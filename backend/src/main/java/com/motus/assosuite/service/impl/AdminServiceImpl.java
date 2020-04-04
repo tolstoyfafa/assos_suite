@@ -1,15 +1,12 @@
 package com.motus.assosuite.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import com.motus.assosuite.enums.RoleType;
+import com.motus.assosuite.api.exceptions.BusinessException;
+import com.motus.assosuite.enums.AssosBusinessErrorCode;
 import com.motus.assosuite.models.Admin;
 import com.motus.assosuite.repository.AdminRepository;
 import com.motus.assosuite.service.AdminService;
@@ -20,6 +17,7 @@ import com.motus.assosuite.service.AdminService;
  * @author fbordjah
  *
  */
+@Service
 public class AdminServiceImpl implements AdminService {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
@@ -37,8 +35,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return repository.findByMail(username);
+	public Admin loadUserByUsername(String username) throws BusinessException {
+		Admin admin = repository.findByMail(username);
+		if (admin == null) {
+			throw new BusinessException("Admin not found", AssosBusinessErrorCode.ADMIN_NOT_FOUND);
+		}
+		return admin;
 	}
 
 }
