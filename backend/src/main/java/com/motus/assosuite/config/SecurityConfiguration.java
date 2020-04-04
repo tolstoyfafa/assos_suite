@@ -13,7 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.motus.assosuite.security.JwtFilter;
 import com.motus.assosuite.service.AdminService;
 
 @Configuration
@@ -29,6 +31,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private JwtFilter filter;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -65,7 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers(HttpMethod.POST,"/assosuite/api/v1/authentication/authenticate/**")
+                .antMatchers(HttpMethod.POST,"/assosuite/api/v1/authentication/authenticate")
                 .permitAll()
                 .antMatchers("/v2/api-docs/**").permitAll()
                 .antMatchers("/swagger-ui.html/**").permitAll()
@@ -73,5 +78,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .anyRequest()
                 .authenticated();
+        http.addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class);
 	}
 }
