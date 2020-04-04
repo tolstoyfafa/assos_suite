@@ -17,9 +17,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 @Component
-public class JwtProvider {
+public class JwtUtils {
 
-	private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 	private final String ROLES_KEY = "roles";
 
@@ -36,14 +36,14 @@ public class JwtProvider {
 	private String issuer;
 
 	public String generateToken(Authentication authentication) {
-		logger.info("===================>>> Generating JWT TOKEN FOR ... {}", authentication.getName());
+		logger.info("Generating JWT TOKEN FOR ... {}", authentication.getName());
 		long now = new Date().getTime();
 		Admin admin = (Admin) authentication.getPrincipal();
 		Claims claims = Jwts.claims();
 		claims.setSubject(admin.getMail());
 		claims.put(ROLES_KEY, admin.getAuthorities());
 		claims.setIssuedAt(new Date());
-		claims.setIssuer("ASSOSUITE_ISSUER");
+		claims.setIssuer(issuer);
 		claims.setExpiration(new Date(now + jwtExpirationInMs));
 		return Jwts.builder().setClaims(claims)
 				.signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()), SignatureAlgorithm.HS512).compact();
@@ -59,6 +59,12 @@ public class JwtProvider {
 		Jws<Claims> claims = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes())).build()
 				.parseClaimsJws(token);
 		return claims.getBody().getSubject();
-
 	}
+	
+	public Date getExpiration(String token) {
+		Jws<Claims> claims = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(jwtSecret.getBytes())).build()
+				.parseClaimsJws(token);
+		return claims.getBody().getExpiration();
+	}
+
 }
