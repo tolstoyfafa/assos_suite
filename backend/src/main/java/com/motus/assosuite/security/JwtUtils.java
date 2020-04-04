@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import com.motus.assosuite.models.Admin;
 
@@ -43,7 +44,7 @@ public class JwtUtils {
 		claims.put(ROLES_KEY, admin.getAuthorities());
 		claims.setIssuedAt(new Date());
 		claims.setIssuer(issuer);
-		claims.setExpiration(new Date(now + jwtExpirationInMs));
+		claims.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs));
 		return Jwts.builder().setClaims(claims)
 				.signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()), SignatureAlgorithm.HS512).compact();
 	}
