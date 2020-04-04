@@ -25,7 +25,8 @@ public class InitServiceImpl implements InitService {
 	private final List<RoleType> ROLES = Arrays.asList(RoleType.SUPERADMIN);
 	// BCrypt online for init with default password
 	// https://www.browserling.com/tools/bcrypt rounds = 10
-	private final String PASSWORD = "$2a$12$N/wyUIWedKzDaMZ65tRYOukXgINfu.z7i4vAqp4coBuHgwgLZajhC";
+	// password raw : secret@!
+	private final String PASSWORD = "$2a$10$jWfcFFxseSquT7vUp9a8GeEUwEDvDBna3Wcw5LF6FtgT3gx.2nfDG";
 
 	@Autowired
 	public InitServiceImpl(AdminRepository repository) {
