@@ -24,27 +24,27 @@ public class JwtUtils {
 
 	private final String ROLES_KEY = "roles";
 
-	@Value("${app.jwtSecret}")
+	@Value("${assosuite.jwt.secret}")
 	private String jwtSecret;
 
-	@Value("${app.jwtExpirationInMs}")
-	private long jwtExpirationInMs;
+	@Value("${assouite.jwt.expiration.inhour}")
+	private long jwtExpirationInHours;
 
-	@Value("${app.audiance}")
+	@Value("${assouite.jwt.audiance}")
 	private String audiance;
 
-	@Value("${app.issuer}")
+	@Value("${assouite.jwt.issuer}")
 	private String issuer;
 
 	public String generateToken(Admin admin) {
 		logger.info("Generating JWT TOKEN FOR ... {}", admin.getName());
-		long now = new Date().getTime();
+		long expirInMS = new Date().getTime() + jwtExpirationInHours * 60 * 60 * 1000;
 		Claims claims = Jwts.claims();
 		claims.setSubject(admin.getMail());
 		claims.put(ROLES_KEY, admin.getAuthorities());
 		claims.setIssuedAt(new Date());
 		claims.setIssuer(issuer);
-		claims.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs));
+		claims.setExpiration(new Date(expirInMS));
 		return Jwts.builder().setClaims(claims)
 				.signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes()), SignatureAlgorithm.HS512).compact();
 	}

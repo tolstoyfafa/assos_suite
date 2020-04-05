@@ -10,23 +10,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import com.motus.assosuite.models.Admin;
 import com.motus.assosuite.repository.AdminRepository;
-import com.motus.assosuite.service.AdminService;
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 
 @SpringBootTest
 public class JwtProviderTest {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	private JwtUtils provider;
-	
+
 	@BeforeEach
 	public void setUp() {
 		logger.info("======BEGIN_SETUP======");
@@ -45,9 +40,9 @@ public class JwtProviderTest {
 	@Test
 	public void testGeneration() {
 		Admin admin = adminRepository.getDefault();
-		String token = provider.generateToken(admin); 
+		String token = provider.generateToken(admin);
 		assertNotNull(token);
 		assertEquals(provider.getMail(token), admin.getMail());
-	logger.info("=============> {}", token);
+		logger.info("=============> {}", token);
 	}
 }
