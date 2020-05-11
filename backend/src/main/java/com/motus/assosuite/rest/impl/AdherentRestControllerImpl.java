@@ -71,14 +71,15 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 	}
 
 	@PutMapping(
-			path = "",
+			path = "/{uuid}",
+			consumes = { MediaType.APPLICATION_JSON_VALUE },
 			produces = {MediaType.APPLICATION_JSON_VALUE} )
 	@ApiOperation(value = "Full Update of an adherent only for admin SUPERADMIN")
 	@Override
 	public ResponseEntity<Adherent> udpate(
 			@RequestBody Adherent adherent,
 			@PathVariable String uuid) {
-		return new ResponseEntity<Adherent>(service.update(adherent, uuid), HttpStatus.CREATED);
+		return new ResponseEntity<Adherent>(service.update(adherent, uuid), HttpStatus.OK);
 	}
 
 }

@@ -33,7 +33,18 @@ public class AdherentServiceImpl implements AdherentService {
 
 	@Override
 	public Adherent update(Adherent adherent, String uuid) {
-
+		Adherent adherentIn = repository.findByUuid(uuid);
+		if (adherentIn == null) {
+			throw new BusinessException("Adherent not found in DB", AssosBusinessErrorCode.ADHERENT_NOT_FOUND);
+		}
+		adherentIn.setFirstName(adherent.getFirstName());
+		adherentIn.setLastName(adherent.getLastName());
+		adherentIn.setMail(adherent.getMail());
+		adherentIn.setPhone(adherent.getPhone());
+		adherentIn.setAddress(adherent.getAddress());
+		adherentIn.setBirthDay(adherent.getBirthDay());
+		adherentIn.setFamilialSituation(adherent.getFamilialSituation());
+		adherentIn.setGenderType(adherent.getGenderType());
 		return repository.save(adherent);
 	}
 
