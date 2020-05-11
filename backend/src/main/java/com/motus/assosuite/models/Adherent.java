@@ -104,10 +104,6 @@ public class Adherent {
 		return phone;
 	}
 
-	public FamilialSituationType getPermitNum() {
-		return familialSituation;
-	}
-
 	public Address getAddress() {
 		return address;
 	}
