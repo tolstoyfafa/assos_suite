@@ -14,4 +14,8 @@ public interface AdherentService {
 	Adherent update(Adherent adherent, String uuid);
 
 	Adherent find(String uuid) throws BusinessException;
+	
+	void delete(String uuid) throws BusinessException;
+	
+	
 }
