@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,20 +40,17 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 	public AdherentRestControllerImpl(AdherentService service) {
 		this.service = service;
 	}
-	
-	@GetMapping(
-			path ="/{uuid}",
-			produces = { MediaType.APPLICATION_JSON_VALUE })
+
+	@GetMapping(path = "/{uuid}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Find an adhrent by its uuid")
 	@Override
 	public ResponseEntity<Adherent> find(@PathVariable String uuid) {
 		LOGGER.debug("find and adherent");
 		return new ResponseEntity<Adherent>(service.find(uuid), HttpStatus.OK);
 	}
-	@PostMapping(
-			path ="",
-			consumes = { MediaType.APPLICATION_JSON_VALUE },
-			produces = { MediaType.APPLICATION_JSON_VALUE })
+
+	@PostMapping(path = "", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Add an adhrent")
 	@Override
 	public ResponseEntity<Adherent> create(@RequestBody @Valid Adherent adherent) {
@@ -60,9 +58,7 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 		return new ResponseEntity<Adherent>(service.create(adherent), HttpStatus.CREATED);
 	}
 
-	@GetMapping(
-			path = "",
-			produces = {MediaType.APPLICATION_JSON_VALUE} )
+	@GetMapping(path = "", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Recover all adhrents only for admin SUPERADMIN")
 	@Override
 	public ResponseEntity<List<Adherent>> findAll() {
@@ -70,16 +66,20 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 		return new ResponseEntity<List<Adherent>>(service.findAll(), HttpStatus.OK);
 	}
 
-	@PutMapping(
-			path = "/{uuid}",
-			consumes = { MediaType.APPLICATION_JSON_VALUE },
-			produces = {MediaType.APPLICATION_JSON_VALUE} )
+	@PutMapping(path = "/{uuid}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Full Update of an adherent only for admin SUPERADMIN")
 	@Override
-	public ResponseEntity<Adherent> udpate(
-			@RequestBody Adherent adherent,
-			@PathVariable String uuid) {
+	public ResponseEntity<Adherent> udpate(@RequestBody Adherent adherent, @PathVariable String uuid) {
 		return new ResponseEntity<Adherent>(service.update(adherent, uuid), HttpStatus.OK);
+	}
+
+	@DeleteMapping(path = "/{uuid}")
+	@ApiOperation(value = "Delte adherent only for admin SUPERADMIN")
+	@Override
+	public ResponseEntity<Adherent> delete(@PathVariable String uuid) {
+		service.delete(uuid);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
 }

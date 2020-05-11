@@ -15,5 +15,7 @@ public interface AdherentRestController {
 	ResponseEntity<List<Adherent>> findAll();
 
 	ResponseEntity<Adherent> udpate(Adherent adherent, String uuid);
+	
+	ResponseEntity<Adherent> delete(String uuid);
 
 }

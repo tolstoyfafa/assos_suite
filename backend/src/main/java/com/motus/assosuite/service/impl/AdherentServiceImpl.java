@@ -56,5 +56,16 @@ public class AdherentServiceImpl implements AdherentService {
 		}
 		return adherent;
 	}
+	
+	@Override
+	public void delete(String uuid) {
+		Adherent adherent = repository.findByUuid(uuid);
+		if (adherent == null) {
+			throw new BusinessException("Adherent not found in DB", AssosBusinessErrorCode.ADHERENT_NOT_FOUND);
+		}
+		repository.delete(adherent);
+	}
+	
+	
 
 }
