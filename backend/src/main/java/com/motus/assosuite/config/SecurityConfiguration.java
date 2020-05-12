@@ -14,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.motus.assosuite.security.JwtFilter;
 import com.motus.assosuite.service.AdminService;
@@ -44,6 +46,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder.userDetailsService(adminService).passwordEncoder(passwordEncoder());
 	}
+	
+    @Bean
+    public WebMvcConfigurer cors() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/assosuite/api/v1/**")
+                        .allowedOrigins("*").allowedMethods("GET","POST","DELETE","PUT","OPTIONS");
+            }
+        };
+    }
 
 	@Override
     public void configure(HttpSecurity http) throws Exception {
