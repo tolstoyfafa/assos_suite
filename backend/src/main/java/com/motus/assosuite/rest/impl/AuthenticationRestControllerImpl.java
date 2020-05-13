@@ -17,10 +17,12 @@ import com.motus.assosuite.api.payloads.JwtResponse;
 import com.motus.assosuite.rest.AuthenticationRestController;
 import com.motus.assosuite.service.AuthenticationService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/assosuite/api/v1/authentication")
+@Api("Assosuite Authentication API ")
 public class AuthenticationRestControllerImpl implements AuthenticationRestController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationRestControllerImpl.class);
@@ -40,7 +42,7 @@ public class AuthenticationRestControllerImpl implements AuthenticationRestContr
 	@Override
 	public ResponseEntity<JwtResponse> authenticateJwt(@RequestBody AuthDto admin) throws BusinessException {
 		String token = service.authenticateJwt(admin);
-		
+		LOGGER.info("PROCESSING JWT GENERATION");
 		return new ResponseEntity<>(new JwtResponse(token), HttpStatus.OK);
 	}
 
