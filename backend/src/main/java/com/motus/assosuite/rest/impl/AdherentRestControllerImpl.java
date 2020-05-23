@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.motus.assosuite.models.Adherent;
 import com.motus.assosuite.rest.AdherentRestController;
-//import com.motus.assosuite.rest.AdherentRestController;
 import com.motus.assosuite.service.AdherentService;
 
 import io.swagger.annotations.Api;
@@ -61,9 +61,11 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 	@GetMapping(path = "", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Recover all adhrents only for admin SUPERADMIN")
 	@Override
-	public ResponseEntity<List<Adherent>> findAll() {
+	public ResponseEntity<List<Adherent>> findAll(@RequestParam(required = false) Integer pageNum,
+			@RequestParam(required = false )Integer pageSize) {
 		LOGGER.debug("Fetching all adherents");
-		return new ResponseEntity<List<Adherent>>(service.findAll(), HttpStatus.OK);
+		List<Adherent> adherents = service.findAll(pageNum, pageSize);
+		return new ResponseEntity<List<Adherent>>(adherents, HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/{uuid}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
