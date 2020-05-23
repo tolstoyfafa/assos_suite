@@ -1,5 +1,6 @@
 package com.motus.assosuite.api.payloads;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 /**
  * AuthDto class contains admin credentials for authentication
@@ -8,10 +9,10 @@ import javax.validation.constraints.NotNull;
  */
 public class AuthDto {
 
-	@NotNull(message = "mail must be set")
+	@NotEmpty(message = "mail must be set")
 	private String mail;
 
-	@NotNull(message = "password must be set")
+	@NotEmpty(message = "password must be set")
 	private String password;
 
 	/**
