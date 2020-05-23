@@ -9,7 +9,7 @@ public interface AdherentService {
 
 	Adherent create(Adherent adherent);
 
-	List<Adherent> findAll();
+	List<Adherent> findAll(Integer pageNum, Integer pageSize);
 
 	Adherent update(Adherent adherent, String uuid);
 

@@ -3,8 +3,12 @@ package com.motus.assosuite.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Objects;
 import com.motus.assosuite.api.exceptions.BusinessException;
 import com.motus.assosuite.enums.AssosBusinessErrorCode;
 import com.motus.assosuite.models.Adherent;
@@ -27,7 +31,11 @@ public class AdherentServiceImpl implements AdherentService {
 	}
 
 	@Override
-	public List<Adherent> findAll() {
+	public List<Adherent> findAll(Integer pageNum, Integer pageSize) {
+		if (!(pageNum == null || pageSize == null)) {
+			Pageable paging = PageRequest.of(pageNum, pageSize);
+			return repository.findAll(paging).toList();
+		}
 		return repository.findAll();
 	}
 

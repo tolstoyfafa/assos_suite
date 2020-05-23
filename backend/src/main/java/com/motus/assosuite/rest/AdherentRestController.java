@@ -12,7 +12,7 @@ public interface AdherentRestController {
 
 	ResponseEntity<Adherent> create(Adherent adherent);
 
-	ResponseEntity<List<Adherent>> findAll();
+	ResponseEntity<List<Adherent>> findAll(Integer pageNum, Integer pageSize);
 
 	ResponseEntity<Adherent> udpate(Adherent adherent, String uuid);
 	
