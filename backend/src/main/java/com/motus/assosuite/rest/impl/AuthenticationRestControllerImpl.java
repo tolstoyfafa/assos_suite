@@ -1,5 +1,7 @@
 package com.motus.assosuite.rest.impl;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class AuthenticationRestControllerImpl implements AuthenticationRestContr
 			produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Create JWT to authenticate admin")
 	@Override
-	public ResponseEntity<JwtResponse> authenticateJwt(@RequestBody AuthDto admin) throws BusinessException {
+	public ResponseEntity<JwtResponse> authenticateJwt(@RequestBody @Valid AuthDto admin) throws BusinessException {
 		String token = service.authenticateJwt(admin);
 		LOGGER.info("PROCESSING JWT GENERATION");
 		return new ResponseEntity<>(new JwtResponse(token), HttpStatus.OK);
