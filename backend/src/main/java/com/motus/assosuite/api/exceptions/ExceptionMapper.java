@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +20,12 @@ public class ExceptionMapper extends ResponseEntityExceptionHandler {
 	public ResponseEntity<ErrorDetails> handleAllExceptions(BusinessException exc){
 		ErrorDetails errorDetails = new ErrorDetails(exc.getCode().getStatus(), exc.getMessage(), "", exc.getCode().getCode());
 		return new ResponseEntity<ErrorDetails>(errorDetails, exc.getCode().getStatus());
+	}
+	
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<ErrorDetails> handleAllExceptions(AuthenticationException exc){
+		ErrorDetails errorDetails = new ErrorDetails(HttpStatus.UNAUTHORIZED, exc.getMessage(), "", 19919);
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.UNAUTHORIZED);
 	}
 	
     @Override
