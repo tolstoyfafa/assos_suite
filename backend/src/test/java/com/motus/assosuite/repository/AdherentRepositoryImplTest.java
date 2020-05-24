@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.motus.assosuite.config.MongoConfigTests;
 import com.motus.assosuite.models.Adherent;
@@ -37,10 +39,27 @@ public class AdherentRepositoryImplTest {
 	}
 
 	@Test
-	public void test() {
+	public void testCreate() {
 		logger.info("======BEGIN_TEST======");
 		Adherent adherent = repository.save(new Adherent());
 		assertNotNull(adherent, "adhrent was not created");
+		logger.info("======END_TEST======");
+	}
+	
+	@Test
+	public void testFindAll() {
+		logger.info("======BEGIN_TEST======");
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		repository.save(new Adherent());
+		assertEquals(7, repository.findAll().size());
+		Pageable paging = PageRequest.of(1, 3);
+		logger.info(paging.toString());
+		assertEquals(3, repository.findAll(paging).toList().size());
 		logger.info("======END_TEST======");
 	}
 
