@@ -2,9 +2,13 @@ package com.motus.assosuite.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.motus.assosuite.api.exceptions.BusinessException;
@@ -17,6 +21,8 @@ import com.motus.assosuite.service.AdherentService;
 public class AdherentServiceImpl implements AdherentService {
 
 	private final AdherentRepository repository;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(AdherentServiceImpl.class);
 
 	@Autowired
 	public AdherentServiceImpl(AdherentRepository repository) {
@@ -29,11 +35,25 @@ public class AdherentServiceImpl implements AdherentService {
 	}
 
 	@Override
-	public List<Adherent> findAll(Integer pageNum, Integer pageSize) {
-		if (!(pageNum == null || pageSize == null)) {
+	public List<Adherent> findAll(Integer pageNum, Integer pageSize, String order, String field) {
+		if (pageNum != null & pageSize != null) {
+			LOGGER.info("Service ==> PAGINATION findAll");
 			Pageable paging = PageRequest.of(pageNum, pageSize);
+			if (field != null) {
+				LOGGER.info("Service ==> SORTING findAll");
+				paging = PageRequest.of(pageNum, pageSize, Sort.by(field));
+				if (order != null) {
+					if (order.equals("DESC")) {
+						LOGGER.info("Service ==> ORDER DESC findAll", order);
+						paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.DESC, field));
+					} else {
+						paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.ASC, field));
+					}
+				}
+			}
 			return repository.findAll(paging).toList();
 		}
+		LOGGER.info("Service ==> FULL findAll");
 		return repository.findAll();
 	}
 
@@ -62,7 +82,7 @@ public class AdherentServiceImpl implements AdherentService {
 		}
 		return adherent;
 	}
-	
+
 	@Override
 	public void delete(String uuid) {
 		Adherent adherent = repository.findByUuid(uuid);
@@ -71,7 +91,5 @@ public class AdherentServiceImpl implements AdherentService {
 		}
 		repository.delete(adherent);
 	}
-	
-	
 
 }
