@@ -26,6 +26,7 @@ import com.motus.assosuite.service.AdherentService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping(path = "/assosuite/api/v1/adherents")
@@ -61,10 +62,13 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 	@GetMapping(path = "", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Recover all adhrents only for admin SUPERADMIN")
 	@Override
-	public ResponseEntity<List<Adherent>> findAll(@RequestParam(required = false) Integer pageNum,
-			@RequestParam(required = false )Integer pageSize) {
+	public ResponseEntity<List<Adherent>> findAll(
+			@RequestParam(required = false) Integer pageNum,
+			@RequestParam(required = false )Integer pageSize,
+			@RequestParam(required = false ,defaultValue = "ASC")String order,
+			@RequestParam(required = false ) @ApiParam(defaultValue = "ASC") String field) {
 		LOGGER.debug("Fetching all adherents");
-		List<Adherent> adherents = service.findAll(pageNum, pageSize);
+		List<Adherent> adherents = service.findAll(pageNum, pageSize,order, field);
 		return new ResponseEntity<List<Adherent>>(adherents, HttpStatus.OK);
 	}
 
