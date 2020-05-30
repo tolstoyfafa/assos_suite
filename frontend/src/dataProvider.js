@@ -1,4 +1,3 @@
-import { stringify } from "query-string";
 import {
   fetchUtils,
   GET_LIST,
@@ -27,7 +26,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
         const { page, perPage } = params.pagination;
         console.log(params)
         const {order, field} = params.sort
-        url = `${apiUrl}/${resource}?pageNum=${page}&pageSize=${perPage}&order=${order}`;
+        url = `${apiUrl}/${resource}?pageNum=${page}&pageSize=${perPage}&order=${order}&field=${field}`;
         break;
       }
       case GET_ONE:
@@ -35,11 +34,9 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
         break;
       case GET_MANY: {
         const query = {
-          filter: JSON.stringify({ id: params.ids })
+          filter: JSON.stringify({ uuid: params.ids })
         };
-        let idStr = "";
-        const queryString = params.ids.map(id => idStr + `uuid=${id}`);
-        url = `${apiUrl}/${resource}?${idStr}}`;
+        url = `${apiUrl}/${resource}?${JSON.stringify(query)}`;
         break;
       }
       case GET_MANY_REFERENCE: {
