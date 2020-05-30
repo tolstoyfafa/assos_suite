@@ -1,18 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Admin, Resource,ListGuesser, EditGuesser} from 'react-admin';
+import dataProvider from './dataProvider'
+import authProvider from './authProvider'
 import "./App.css";
-import Login from "./Login/Login";
+import {BACK_URL}  from "./constants";
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-        </Switch>
-      </Router>
-    </div>
-  );
-}
+const App = () => (
+  <Admin dataProvider={dataProvider(BACK_URL)} authProvider={authProvider} ></Admin>
+)
 
 export default App;
