@@ -24,7 +24,6 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
     switch (type) {
       case GET_LIST: {
         const { page, perPage } = params.pagination;
-        console.log(params)
         const {order, field} = params.sort
         url = `${apiUrl}/${resource}?pageNum=${page}&pageSize=${perPage}&order=${order}&field=${field}`;
         break;
