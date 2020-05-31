@@ -8,6 +8,7 @@ import {BACK_URL}  from "./constants";
 import { httpClient } from "./authorization";
 import { AdherentCreate } from "./AdherentCreate";
 import {AdherentEdit} from './AdherentEdit'
+import { AdherentShow } from "./AdhrentShow";
 
 const App = () => (
   <Admin title = "AssoSuite"
@@ -18,7 +19,8 @@ const App = () => (
         title="ADHERENTS"
         list={AdherentList}
         create={AdherentCreate} 
-        edit={AdherentEdit} 
+        edit={AdherentEdit}
+        show={AdherentShow} 
         >
     </Resource>
   </Admin>
