@@ -30,7 +30,7 @@ export const AdherentCreate = (props) => (
         <TextInput label="Tél" source="phone" validate={[required("Le numéro de téléphone est obligatoire"),
                      number(), minLength(2), maxLength(15)]} />
         <TextInput label="numéro de la rue" source="address.streetNum" validate={[required(), number()]} />
-        <TextInput label="rue" source="address.street" validate={[required(), number()]} />
+        <TextInput label="rue" source="address.street" validate={[required("Le nom  de la rue est obligatoire")]} />
         <TextInput label="ville" source="address.city" validate={[required("Le nom de la ville est obligatoire")]} />
         <TextInput label="code postale" source="address.zip" validate={validateZipCode} />
         <TextInput label="supplément addresse" source="address.description" />
