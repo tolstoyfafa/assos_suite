@@ -1,5 +1,6 @@
 package com.motus.assosuite.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -71,7 +72,8 @@ public class AdherentServiceImpl implements AdherentService {
 		adherentIn.setBirthDay(adherent.getBirthDay());
 		adherentIn.setFamilialSituation(adherent.getFamilialSituation());
 		adherentIn.setGenderType(adherent.getGenderType());
-		return repository.save(adherent);
+		adherentIn.setModificationDate(new Date());
+		return repository.save(adherentIn);
 	}
 
 	@Override
