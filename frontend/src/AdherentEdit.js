@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Create, Edit, SimpleForm, TextInput, DateInput, SelectInput,Toolbar,SaveButton, Datagrid, TextField, DateField, EditButton ,
     required,
     minLength,
@@ -10,20 +10,19 @@ import { Create, Edit, SimpleForm, TextInput, DateInput, SelectInput,Toolbar,Sav
     email,
     choices} from 'react-admin';
 
+const AdhrentEditToolbar = (props) => (<Toolbar {...props} >
+        <SaveButton
+            label="Modifier"
+        />
+    </Toolbar>);
+
 const validateFirstName = [required("Le Nom est obligatoire"), minLength(2), maxLength(30)];
 const validateEmail = [required("Le Prénom est obligatoire"),email()];
 const validateZipCode = regex(/^\d{5}$/, 'Veuillez saisir un code postal valide');
 
-
-const AdhrentCreateToolbar = (props) => (<Toolbar {...props} >
-    <SaveButton
-        label="Ajouter"
-    />
-</Toolbar>);
-
-export const AdherentCreate = (props) => (
-    <Create {...props} title="Ajouter un adhérent" >
-    <SimpleForm toolbar={<AdhrentCreateToolbar/>} >
+export const AdherentEdit = (props) => (
+    <Edit {...props} title="Modifier un adhérent" >
+    <SimpleForm toolbar={<AdhrentEditToolbar/>} >
         <TextInput label="Nom" source="firstName" validate={validateFirstName}/>
         <TextInput label="Prénom" source="lastName" validate={validateFirstName} />
         <TextInput label="Couriel" source="mail" type="email" validate={validateEmail} />
@@ -39,14 +38,10 @@ export const AdherentCreate = (props) => (
             { id: 'FEMALE', name: 'Femme'},
         ]}  helperText={""}/>
         <SelectInput label="situation matrimoniale" source="familialSituation" choices={[
-            { id: 'CELIB', name: 'Celib'},
+            { id: 'SINGLE', name: 'Single'},
             { id: 'MARIED', name: 'Maried'},
         ]}  helperText={""}/>
         <DateInput label="Naissance" source="birthDay"  validate={required()}/>
     </SimpleForm>
-</Create>
+</Edit>
 )
-
-    
-
-
