@@ -1,7 +1,10 @@
 package com.motus.assosuite.service.impl;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,21 +20,33 @@ import com.motus.assosuite.enums.AssosBusinessErrorCode;
 import com.motus.assosuite.models.Adherent;
 import com.motus.assosuite.repository.AdherentRepository;
 import com.motus.assosuite.service.AdherentService;
+import com.motus.assosuite.service.MailService;
 
 @Service
 public class AdherentServiceImpl implements AdherentService {
 
 	private final AdherentRepository repository;
 	
+	private final MailService mailService;
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(AdherentServiceImpl.class);
 
 	@Autowired
-	public AdherentServiceImpl(AdherentRepository repository) {
+	public AdherentServiceImpl(AdherentRepository repository,
+			MailService mailSender) {
 		this.repository = repository;
+		this.mailService = mailSender;
 	}
 
 	@Override
 	public Adherent create(Adherent adherent) {
+		try {
+			mailService.sendMailOnAdd(adherent.getMail());
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}catch (IOException e) {
+            e.printStackTrace();
+        }
 		return repository.save(adherent);
 	}
 

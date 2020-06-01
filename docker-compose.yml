@@ -21,4 +21,13 @@ services:
       image: mongo
       ports:
         - 27017:27017
-
+  mail:
+    image: tvial/docker-mailserver:latest
+    hostname: mail
+    domainname: domain.com
+    container_name: mail
+    ports:
+      - "2505:25"
+      - "1430:143"
+    volumes:
+      - ./config/:/tmp/docker-mailserver/
