@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +70,11 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 			@RequestParam(required = false ) @ApiParam(defaultValue = "ASC") String field) {
 		LOGGER.debug("Fetching all adherents");
 		List<Adherent> adherents = service.findAll(pageNum, pageSize,order, field);
-		return new ResponseEntity<List<Adherent>>(adherents, HttpStatus.OK);
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Access-Control-Expose-Headers", "content-range");
+		String size = String.valueOf(service.findAll().size());
+		responseHeaders.add("content-range", size);
+		return new ResponseEntity<List<Adherent>>(adherents, responseHeaders,HttpStatus.OK);
 	}
 
 	@PutMapping(path = "/{uuid}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
