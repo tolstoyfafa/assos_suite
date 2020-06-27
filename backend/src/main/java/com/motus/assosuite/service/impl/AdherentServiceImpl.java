@@ -60,27 +60,23 @@ public class AdherentServiceImpl implements AdherentService {
 
 	@Override
 	public List<Adherent> findAll(Integer pageNum, Integer pageSize, String order, String field) {
+		pageNum = pageNum - 1;
+		List<Adherent> fullList = repository.findAll();
 		if (pageNum != null & pageSize != null) {
-			LOGGER.info("Service ==> PAGINATION findAll");
 			Pageable paging = PageRequest.of(pageNum, pageSize);
-			if (field != null) {
-				LOGGER.info("Service ==> SORTING findAll");
-				paging = PageRequest.of(pageNum, pageSize, Sort.by(field));
-				if (order != null) {
-					if (order.equals("DESC")) {
-						LOGGER.info("Service ==> ORDER DESC findAll", order);
-						paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.DESC, field));
-					} else {
-						paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.ASC, field));
-					}
-				}
+			if (order.equals("DESC")) {
+				paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.DESC, field));
+			} else {
+				paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.ASC, field));
 			}
+			LOGGER.info("Get all adherents with  pageNum = {}, pageSize = {}, sortinf filed = {}, order = {}",
+					pageNum, pageSize, field, order);
 			return repository.findAll(paging).toList();
 		}
-		LOGGER.info("Service ==> FULL findAll");
-		return repository.findAll();
+		LOGGER.info("Get all adherents without query params");
+		return fullList;
 	}
-	
+
 	@Override
 	public List<Adherent> findAll() {
 		return repository.findAll();
