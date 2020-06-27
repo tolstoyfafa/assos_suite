@@ -57,10 +57,22 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Deployment 
 
-Add additional notes about how to deploy this on a live system
-
+### Deploy on aws 
+1. Create a simple EC2 instance 
+2. copy resources after have cloned the repo
+```bash
+scp -r -i yourkeyname.pem ~/path/to/your/project/folder/from/root ec2-user@18.225.7.177:~/
+```
+3. install docker and docker compose on your EC2 (ubuntu)
+    * docker : https://docs.docker.com/engine/install/ubuntu/
+    * docker compose : https://docs.docker.com/compose/install/
+4. launch the command 
+```bash
+docker-compose up 
+```
+5. now your application is available on `http://yourIP`
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
