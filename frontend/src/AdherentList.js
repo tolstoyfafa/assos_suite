@@ -1,8 +1,8 @@
 import * as React from "react";
-import { List, Datagrid, TextField, EmailField, EditButton,ShowButton,DeleteButton } from 'react-admin';
+import { List, Datagrid, TextField, EmailField, EditButton,ShowButton,DeleteButton, Pagination } from 'react-admin';
 
 export const AdherentList = props => (
-    <List {...props} perPage={5} >
+    <List {...props}  >
         <Datagrid rowClick="show">
             <TextField source="firstName" />
             <TextField source="lastName" />
