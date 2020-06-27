@@ -80,6 +80,11 @@ public class AdherentServiceImpl implements AdherentService {
 		LOGGER.info("Service ==> FULL findAll");
 		return repository.findAll();
 	}
+	
+	@Override
+	public List<Adherent> findAll() {
+		return repository.findAll();
+	}
 
 	@Override
 	public Adherent update(Adherent adherent, String uuid) {
