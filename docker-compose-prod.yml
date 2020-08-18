@@ -1,0 +1,34 @@
+# docker-compose file used to deploy assosuite in a prodution environment
+#   TODO: add traefik, networks management
+version: '3.8'
+
+services:
+  backend:
+    image: "docker.pkg.github.com/tolstoyfafa/assosuite/backend:${APP_VERSION}"
+    restart: always
+    depends_on: 
+      - mongo
+    networks:
+      - backend
+      - frontend
+
+  frontend:
+    image: "docker.pkg.github.com/tolstoyfafa/assosuite/frontend:${APP_VERSION}"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - frontend  
+
+  database:
+    image: mongo
+    restart: always
+    networks:
+      - backend  
+  
+volumes:
+  db-data:
+
+networks:
+  backend:
+  frontend:    
