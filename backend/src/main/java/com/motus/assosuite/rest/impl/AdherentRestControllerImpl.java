@@ -46,7 +46,7 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 	@ApiOperation(value = "Find an adhrent by its uuid")
 	@Override
 	public ResponseEntity<Adherent> find(@PathVariable String uuid) {
-		LOGGER.debug("find and adherent");
+		LOGGER.debug("find an adherent");
 		return new ResponseEntity<Adherent>(service.find(uuid), HttpStatus.OK);
 	}
 
