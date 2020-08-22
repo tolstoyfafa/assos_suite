@@ -1,2 +1,4 @@
 tasks*
 .gitmessage
+.env
+/config
