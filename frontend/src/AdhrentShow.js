@@ -1,5 +1,5 @@
 import React from 'react'
-import { Show, SimpleShowLayout, TextField, DateField, EditButton} from 'react-admin';
+import { Show, SimpleShowLayout, TextField, DateField} from 'react-admin';
 
 export const AdherentShow = (props) => (
 <Show {...props}>
