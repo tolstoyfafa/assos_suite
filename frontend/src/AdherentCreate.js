@@ -1,14 +1,12 @@
 import React from "react";
-import { Create, Edit, SimpleForm, TextInput, DateInput, SelectInput,Toolbar,SaveButton, Datagrid, TextField, DateField, EditButton ,
+import { Create,  SimpleForm, TextInput, DateInput, SelectInput,Toolbar,SaveButton, 
     required,
     minLength,
     maxLength,
-    minValue,
-    maxValue,
     number,
     regex,
     email,
-    choices} from 'react-admin';
+    } from 'react-admin';
 
 const validateFirstName = [required("Le Nom est obligatoire"), minLength(2), maxLength(30)];
 const validateEmail = [required("Le Prénom est obligatoire"),email()];
