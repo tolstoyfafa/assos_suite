@@ -40,7 +40,19 @@ services:
     restart: always
     networks:
       - backend  
-  
+
+  mail:
+    image: tvial/docker-mailserver:latest
+    hostname: ${HOSTNAME}
+    domainname: ${DOMAINNAME}
+    ports:
+     - "20025:25"
+     - "20465:465"
+     - "20143:143"
+     - "20587:587"
+     - "20993:993"
+    volumes:
+     - ./config/:/tmp/docker-mailserver/
 # Volumes
 volumes:
   db-data:
