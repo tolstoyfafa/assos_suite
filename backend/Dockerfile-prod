@@ -9,4 +9,5 @@ EXPOSE 8080
 FROM adoptopenjdk/openjdk11:latest
 COPY --from=build /build/target/*.jar /usr/local/lib/assosuite.jar
 WORKDIR /usr/app
-ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar"]
+ENV MODE prod
+ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar","--spring.profiles.active=${MODE}"]
