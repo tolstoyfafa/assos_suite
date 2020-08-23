@@ -41,6 +41,12 @@ services:
        - "traefik.docker.network=assos-backend"                                    
        - "traefik.http.services.backend.loadbalancer.server.port=80"             
 
+  database:
+    image: mongo:4.2
+    restart: always
+    networks:
+      - backend  
+
 networks:
   backend:
     internal: true
