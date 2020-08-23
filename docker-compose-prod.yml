@@ -3,6 +3,17 @@
 version: '3.8'
 
 services:
+  proxy:
+    image: traefik:v2.2
+    command: --api.insecure=true --providers.docker
+    ports:
+      -  80:80
+      -  8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - backend
+      - frontend
   backend:
     image: "docker.pkg.github.com/tolstoyfafa/assosuite/backend:${APP_VERSION}"
     restart: always
@@ -10,7 +21,6 @@ services:
       - mongo
     networks:
       - backend
-      - frontend
 
   frontend:
     image: "docker.pkg.github.com/tolstoyfafa/assosuite/frontend:${APP_VERSION}"

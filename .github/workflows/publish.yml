@@ -1,0 +1,27 @@
+name: publish backend & frontend docker images
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout ressources
+        uses: actions/checkout@v2
+      - name: install docker
+        run: curl -sSL https://get.docker.com/ | sh
+      - name: Login to github registry
+        run: echo ${{secrets.REGISTRY_TOKEN}} | docker login docker.pkg.github.com -u ${{github.actor}} --password-stdin
+      - name: Get the version of the images from the release tags
+        id: get_version
+        run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+      - name: build the images
+        run: |
+          docker build -f backend/Dockerfile-prod -t docker.pkg.github.com/${{github.repository}}/assos-backend:${{steps.get_version.outputs.version}} backend
+          docker build -f frontend/Dockerfile-prod -t docker.pkg.github.com/${{github.repository}}/assos-frontend:${{steps.get_version.outputs.version}} frontend
+      - name: push the images to github registry
+        run: |
+          docker push docker.pkg.github.com/${{github.repository}}/assos-backend:${{steps.get_version.outputs.version}}
+          docker push docker.pkg.github.com/${{github.repository}}/assos-frontend:${{steps.get_version.outputs.version}}
+
