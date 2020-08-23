@@ -6,32 +6,32 @@ version: '3.7'
 services:
   # App backend service
   backend:
-    # Configuration for building the docker image for the backend service
-    build:
-      context: ./backend # Use an image built from the specified dockerfile in the `polling-app-server` directory.
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-    restart: always
-    depends_on: 
-      - mongo # This service depends on mysql. Start that first.
-    networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - backend
-      - frontend
-
-  # Frontend Service 
+    #    # Configuration for building the docker image for the backend service
+    #    build:
+    #      context: ./backend # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+    #      dockerfile: Dockerfile
+    #    ports:
+    #      - "8081:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    #    restart: always
+    #    depends_on: 
+    #      - mongo # This service depends on mysql. Start that first.
+    #    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+    #      - backend
+    #      - frontend
+    #
+    #  # Frontend Service 
   frontend:
-    build:
-      context: ./frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
-      dockerfile: Dockerfile
-    ports:
-      - "9090:80" # Map the exposed port 80 on the container to port 9090 on the host machine
-    restart: always
-    depends_on:
-      - backend
-    networks:
-      - frontend  
-
+    #    build:
+    #      context: ./frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
+    #      dockerfile: Dockerfile
+    #    ports:
+    #      - "9090:80" # Map the exposed port 80 on the container to port 9090 on the host machine
+    #    restart: always
+    #    depends_on:
+    #      - backend
+    #    networks:
+    #      - frontend  
+    #
   # Database Service (Mysql)
   mongo:
     image: mongo

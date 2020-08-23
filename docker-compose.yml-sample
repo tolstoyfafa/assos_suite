@@ -1,0 +1,63 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  backend:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: ./backend # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+    depends_on: 
+      - mongo # This service depends on mysql. Start that first.
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+      - frontend
+
+  # Frontend Service 
+  frontend:
+    build:
+      context: ./frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "9090:80" # Map the exposed port 80 on the container to port 9090 on the host machine
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - frontend  
+
+  # Database Service (Mysql)
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
+    networks:
+      - backend  
+
+  mail:
+    image: tvial/docker-mailserver:latest
+    hostname: ${HOSTNAME}
+    domainname: ${DOMAINNAME}
+    ports:
+     - "20025:25"
+     - "20465:465"
+     - "20143:143"
+     - "20587:587"
+     - "20993:993"
+    volumes:
+     - ./config/:/tmp/docker-mailserver/
+# Volumes
+volumes:
+  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
+  frontend:    
