@@ -58,8 +58,13 @@ Give an example
 ```
 
 ## Deployment
-
-Add additional notes about how to deploy this on a live system
+### Docker compose deployment
+- install docker & docker-compose on your machine
+- copy the docker-compose-prod.yml to you deployment environment
+- execute this command:
+```bash
+docker-compose up -d 
+```
 
 ## Built With
 
