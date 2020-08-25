@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.motus.assosuite.api.exceptions.BusinessException;
 import com.motus.assosuite.api.payloads.AuthDto;
+import com.motus.assosuite.api.payloads.ChangePasswordDto;
 import com.motus.assosuite.api.payloads.JwtResponse;
+import com.motus.assosuite.models.Admin;
 import com.motus.assosuite.rest.AuthenticationRestController;
 import com.motus.assosuite.service.AuthenticationService;
 
@@ -46,6 +48,15 @@ public class AuthenticationRestControllerImpl implements AuthenticationRestContr
 		String token = service.authenticateJwt(admin);
 		LOGGER.info("PROCESSING JWT GENERATION");
 		return new ResponseEntity<>(new JwtResponse(token), HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "/changePassword",
+			consumes = { MediaType.APPLICATION_JSON_VALUE },
+			produces = { MediaType.APPLICATION_JSON_VALUE })
+	@ApiOperation(value = "Change password and generate new JWT to admin")
+	@Override
+	public ResponseEntity<Admin> changePassword(@RequestBody @Valid ChangePasswordDto change) throws BusinessException {
+		return new ResponseEntity<Admin>(service.changePassword(change),HttpStatus.OK);
 	}
 
 }

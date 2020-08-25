@@ -7,7 +7,10 @@ import com.motus.assosuite.models.Admin;
 
 public interface AdminService extends UserDetailsService {
 
-	Admin loadUserByUsername(String username) throws BusinessException ;
+	Admin loadUserByUsername(String username) throws BusinessException;
 
+	boolean found(String username) throws BusinessException;
+	
+	Admin update(Admin admin) throws BusinessException;
 	
 }

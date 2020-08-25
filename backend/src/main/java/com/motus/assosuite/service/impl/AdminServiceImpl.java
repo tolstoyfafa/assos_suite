@@ -20,6 +20,7 @@ import com.motus.assosuite.service.AdminService;
 @Service
 public class AdminServiceImpl implements AdminService {
 
+
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -29,9 +30,23 @@ public class AdminServiceImpl implements AdminService {
 	public AdminServiceImpl(AdminRepository repository) {
 		this.repository = repository;
 	}
+	
+	@Override
+	public boolean found(String username) throws BusinessException {
+		if (loadUserByUsername(username) != null) {
+			return true;
+		}
+		return false;
+	}
 
 	protected Admin getAdmin(String uuid) {
 		return repository.findByUuid(uuid);
+	}
+	
+	@Override
+	public Admin update(Admin admin) throws BusinessException {
+		
+		return repository.save(admin);
 	}
 
 	@Override

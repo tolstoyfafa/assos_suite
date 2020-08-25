@@ -1,0 +1,59 @@
+# docker-compose file used to deploy assosuite in a prodution environment
+#   TODO: add traefik, networks management
+version: '3.8'
+
+services:
+
+  proxy:
+    image: traefik:v2.2
+    restart: always
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --api.debug=true
+      - --providers.docker.network=assos-network-web
+      - --entrypoints.assos-web.address=:80
+    ports:
+      -  80:80
+      -  8080:8080
+      -  443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - assos-network-web
+
+  backend:
+    image: "docker.pkg.github.com/tolstoyfafa/assos_suite/assos-backend:${APP_VERSION}"
+    restart: always
+    depends_on: 
+      - mongo
+    labels:
+      - "traefik.http.routers.assos-back-router.rule=Host(`backend.docker.localhost`)"
+      - "traefik.http.routers.assos-back-entrypoint.entrypoints=assos-web"
+      - "traefik.http.services.backend.loadbalancer.server.port=8080"
+    networks:
+      - assos-network-web
+      - backend-network
+
+  frontend:
+    image: "docker.pkg.github.com/tolstoyfafa/assos_suite/assos-frontend:${APP_VERSION}"
+    restart: always
+    depends_on:
+      - backend
+    labels:
+        - "traefik.http.routers.assos-front-router.rule=Host(`frontend.docker.localhost`)" 
+        - "traefik.http.routers.assos-front-entrypoint.entrypoints=assos-web"
+    networks:
+        - assos-network-web
+
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      - backend-network
+
+networks:
+  assos-network-web:
+    internal: false
+  backend-network:
+    internal: true
