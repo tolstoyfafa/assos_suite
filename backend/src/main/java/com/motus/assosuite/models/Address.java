@@ -7,7 +7,7 @@ public class Address {
 	private String street;
 	
 	private String city;
-	
+	// TODO: Change type to integer
 	private String zip;
 	
 	private String description;
