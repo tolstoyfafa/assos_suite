@@ -15,7 +15,8 @@ public enum AssosBusinessErrorCode {
 	ADMIN_NOT_FOUND(2002, HttpStatus.NOT_FOUND),
 	GROUP_NOT_FOUND(3000, HttpStatus.NOT_FOUND),
 	GROUP_EXISTS(3001, HttpStatus.BAD_REQUEST),
-	MAIL_SEND_ERROR(3002, HttpStatus.INTERNAL_SERVER_ERROR);
+	MAIL_SEND_ERROR(3002, HttpStatus.INTERNAL_SERVER_ERROR),
+	PASSWORD_INVALID(4000, HttpStatus.BAD_REQUEST);
 	private final int code;
 	private final HttpStatus status;
 

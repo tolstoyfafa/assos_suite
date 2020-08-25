@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motus.assosuite.enums.RoleType;
 
 /**
@@ -31,6 +32,7 @@ public class Admin implements UserDetails, UserPrincipal{
 	private static final long serialVersionUID = -644713787682430702L;
 
 	@Id
+	@JsonIgnore
 	private ObjectId id;
 
 	private String uuid;
@@ -38,9 +40,10 @@ public class Admin implements UserDetails, UserPrincipal{
 	@Email
 	@Indexed(unique = true)
 	private String mail;
-
+	
+	@JsonIgnore
 	private String password;
-
+	
 	private List<RoleType> roles;
 
 	public Admin() {
@@ -105,25 +108,28 @@ public class Admin implements UserDetails, UserPrincipal{
 	public String getUsername() {
 		return mail;
 	}
-
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	@JsonIgnore
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	@JsonIgnore
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
