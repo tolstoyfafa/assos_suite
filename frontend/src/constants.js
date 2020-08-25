@@ -1,2 +1,6 @@
 const host = process.env.REACT_APP_HOST
-export const BACK_URL = "http://" + host + ":8080/assosuite/api/v1"
+/* TODO: add port env variable
+const port = ADD_ENV_HERE
+*/ 
+
+export const BACK_URL = "http://" + host + "/assosuite/api/v1"
