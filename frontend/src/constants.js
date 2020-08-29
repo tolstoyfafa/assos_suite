@@ -1,4 +1,3 @@
-const host = process.env.REACT_APP_HOST
-const port = process.env.REACT_APP_PORT
+import settings from "./config";
 
-export const BACK_URL = "http://" + host + port +"/assosuite/api/v1"
+export const BACK_URL = "http://" + settings.APP_HOST + ":" + settings.PORT +"/assosuite/api/v1"

@@ -12,6 +12,7 @@ import { AdherentCreate } from "./AdherentCreate";
 import {AdherentEdit} from './AdherentEdit'
 import { AdherentShow } from "./AdhrentShow";
 
+
 const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
 const App = () => (
   <Admin title = "AssoSuite"
