@@ -45,7 +45,7 @@ services:
         - "traefik.http.routers.assos-front-entrypoint.entrypoints=assos-web"
     networks:
         - assos-network-web
-
+    
   mongo:
     image: mongo
     restart: always

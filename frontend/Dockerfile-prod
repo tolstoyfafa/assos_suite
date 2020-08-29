@@ -1,4 +1,7 @@
 FROM node:alpine AS build
+ARG DOMAIN
+ARG PORT
+
 WORKDIR /app
 ENV appDir /app
 COPY . ${appDir}
