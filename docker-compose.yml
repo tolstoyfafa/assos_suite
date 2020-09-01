@@ -28,9 +28,11 @@ services:
     depends_on: 
       - mongo
     labels:
-      - "traefik.http.routers.assos-back-router.rule=Host(`backend.docker.localhost`)"
+      - "traefik.http.routers.assos-back-router.rule=Host(`${BACKEND_DN}`)"
       - "traefik.http.routers.assos-back-entrypoint.entrypoints=assos-web"
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.back-mid.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST"
+      - "traefik.http.middlewares.back-mid.headers.accesscontrolalloworiginlist=http://${FRONTEND_DN}" 
     networks:
       - assos-network-web
       - backend-network
@@ -41,7 +43,7 @@ services:
     depends_on:
       - backend
     labels:
-        - "traefik.http.routers.assos-front-router.rule=Host(`frontend.docker.localhost`)" 
+        - "traefik.http.routers.assos-front-router.rule=Host(`${FRONTEND_DN}`)" 
         - "traefik.http.routers.assos-front-entrypoint.entrypoints=assos-web"
     networks:
         - assos-network-web
