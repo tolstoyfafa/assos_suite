@@ -12,13 +12,20 @@ services:
       - --providers.docker=true
       - --api.debug=true
       - --providers.docker.network=assos-network-web
-      - --entrypoints.assos-web.address=:80
+      - --entrypoints.assosuite-web.address=:80
+      - --entrypoints.assosuite-web-secured.address=:443
+      - --providers.file.filename=/dynamic.yaml
+      - --certificatesresolvers.assosuite-challenge.acme.tlschallenge=true
+      - --certificatesresolvers.assosuite-challenge.acme.email=tolstoyfafa@gmail.com
+      - --certificatesresolvers.assosuite-challenge.acme.storage=/letsencrypt/acme.json
     ports:
       -  80:80
       -  8080:8080
       -  443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/letsencrypt:/letsencrypt
+      - ./config/dynamic.yaml:/dynamic.yaml
     networks:
       - assos-network-web
 
@@ -29,10 +36,14 @@ services:
       - mongo
     labels:
       - "traefik.http.routers.assos-back-router.rule=Host(`${BACKEND_DN}`)"
-      - "traefik.http.routers.assos-back-entrypoint.entrypoints=assos-web"
+      - "traefik.http.routers.assos-back-entrypoint.entrypoints=assosuite-web"
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
       - "traefik.http.middlewares.back-mid.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST"
       - "traefik.http.middlewares.back-mid.headers.accesscontrolalloworiginlist=http://${FRONTEND_DN}" 
+      - "traefik.http.routers.assos-back-secured.rule=Host(`${BACKEND_DN}`)"
+      - "traefik.http.routers.assos-back-secured.entrypoints=assosuite-web-secured"
+      - "traefik.http.routers.assos-back-secured.tls.certresolver=assosuite-challenge"
+
     networks:
       - assos-network-web
       - backend-network
@@ -44,7 +55,11 @@ services:
       - backend
     labels:
         - "traefik.http.routers.assos-front-router.rule=Host(`${FRONTEND_DN}`)" 
-        - "traefik.http.routers.assos-front-entrypoint.entrypoints=assos-web"
+        - "traefik.http.routers.assos-front-entrypoint.entrypoints=assosuite-web"
+        - "traefik.http.routers.assos-front-secured.rule=Host(`${FRONTEND_DN}`)"
+        - "traefik.http.routers.assos-front-secured.entrypoints=assosuite-web-secured"
+        - "traefik.http.routers.assos-front-secured.tls.certresolver=assosuite-challenge"
+
     networks:
         - assos-network-web
     environment:
