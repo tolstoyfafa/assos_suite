@@ -71,6 +71,8 @@ services:
     restart: always
     networks:
       - backend-network
+    labels:
+      - "treafik.enable=false"
 
 networks:
   assos-network-web:
