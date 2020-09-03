@@ -38,8 +38,12 @@ services:
       - "traefik.http.routers.assos-back-router.rule=Host(`${BACKEND_DN}`)"
       - "traefik.http.routers.assos-back-entrypoint.entrypoints=assosuite-web"
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
-      - "traefik.http.middlewares.back-mid.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST"
-      - "traefik.http.middlewares.back-mid.headers.accesscontrolalloworiginlist=http://${FRONTEND_DN}" 
+      - "traefik.http.middlewares.back-headers.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,POST,DELETE"
+      - "traefik.http.middlewares.back-headers.headers.addvaryheader=true"
+      - "traefik.http.middlewares.back-headers.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.back-headers.headers.accesscontrolallowcredentials=true"
+      - "traefik.http.middlewares.back-headers.headers.accesscontrolalloworiginlist=*"
+        #      - "traefik.http.middlewares.back-headers.headers.customresponseheaders=Access-Control-Allow-Origin:*"
       - "traefik.http.routers.assos-back-secured.rule=Host(`${BACKEND_DN}`)"
       - "traefik.http.routers.assos-back-secured.entrypoints=assosuite-web-secured"
       - "traefik.http.routers.assos-back-secured.tls.certresolver=assosuite-challenge"
@@ -64,7 +68,6 @@ services:
         - assos-network-web
     environment:
         - API_URL=${ENV_API_URL}
-        - API_PORT=${ENV_API_PORT}
     
   mongo:
     image: mongo

@@ -7,7 +7,6 @@ RUN yarn build
 
 FROM nginx:alpine
 ENV API_URL=""
-ENV API_PORT=""
 COPY --from=build --chown=nginx:nginx /app/build /usr/share/nginx/html
 COPY docker-entrypoint.sh generate_config_js.sh /
 RUN chmod +x docker-entrypoint.sh generate_config_js.sh
