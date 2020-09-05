@@ -51,6 +51,12 @@ services:
     networks:
       - assos-network-web
       - backend-network
+    environment:
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_DURATION=${JWT_DURATION}
+
 
   frontend:
     image: "docker.pkg.github.com/tolstoyfafa/assos_suite/assos-frontend:${APP_VERSION}"
