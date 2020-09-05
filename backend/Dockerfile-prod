@@ -10,4 +10,9 @@ FROM adoptopenjdk/openjdk11:latest
 COPY --from=build /build/target/*.jar /usr/local/lib/assosuite.jar
 WORKDIR /usr/app
 ENV MODE prod
-ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar","--spring.profiles.active=${MODE}"]
+ENV MAIL_USERNAME=""
+ENV MAIL_PASSWORD=""
+ENV JWT_SECRET=""
+# Default value = 1 hour
+ENV JWT_DURATION=""
+ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar","--spring.profiles.active=${MODE}","--spring.mail.username=${MAIL_USERNAME}","spring.mail.password=${MAIL_PASSWORD}","--assosuite.jwt.secret=${JWT_SECRET}","assouite.jwt.expiration.inhour=${JWT_DURATION}"]
