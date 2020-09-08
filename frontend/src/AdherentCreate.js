@@ -37,8 +37,8 @@ export const AdherentCreate = (props) => (
             { id: 'FEMALE', name: 'Femme'},
         ]}  helperText={""}/>
         <SelectInput label="situation matrimoniale" source="familialSituation" choices={[
-            { id: 'CELIB', name: 'Celib'},
-            { id: 'MARIED', name: 'Maried'},
+            { id: 'CELIB', name: 'Célibataire'},
+            { id: 'MARIED', name: 'Marié(e)'},
         ]}  helperText={""}/>
         <DateInput label="Naissance" source="birthDay"  validate={required()}/>
     </SimpleForm>
