@@ -15,7 +15,7 @@ const AdhrentEditToolbar = (props) => (<Toolbar {...props} >
     </Toolbar>);
 
 const validateFirstName = [required("Le Nom est obligatoire"), minLength(2), maxLength(30)];
-const validateEmail = [required("Le Prénom est obligatoire"),email()];
+const validateEmail = [required("Le Prénom est obligatoire"), email()];
 const validateZipCode = regex(/^\d{5}$/, 'Veuillez saisir un code postal valide');
 
 export const AdherentEdit = (props) => (
@@ -36,8 +36,8 @@ export const AdherentEdit = (props) => (
             { id: 'FEMALE', name: 'Femme'},
         ]}  helperText={""}/>
         <SelectInput label="situation matrimoniale" source="familialSituation" choices={[
-            { id: 'SINGLE', name: 'Single'},
-            { id: 'MARIED', name: 'Maried'},
+            { id: 'SINGLE', name: 'Célibataire'},
+            { id: 'MARIED', name: 'Marié(e)'},
         ]}  helperText={""}/>
         <DateInput label="Naissance" source="birthDay"  validate={required()}/>
     </SimpleForm>
