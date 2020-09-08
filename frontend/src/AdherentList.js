@@ -4,11 +4,11 @@ import { List, Datagrid, TextField, EmailField, EditButton,ShowButton,DeleteButt
 export const AdherentList = props => (
     <List {...props}  >
         <Datagrid rowClick="show">
-            <TextField source="firstName" />
-            <TextField source="lastName" />
-            <EmailField source="mail" />
-            <TextField source="phone" />
-            <EditButton label="Modifier"/>
+            <TextField source="firstName" label="Prénom"/>
+            <TextField source="lastName" label="Nom"/>
+            <EmailField source="mail" label="Couriel"/>
+            <TextField source="phone" label="Téléphone"/>
+            <EditButton label="Modifier" />
             <ShowButton label="Détails"/>
             <DeleteButton label="supprimer"/>
         </Datagrid>

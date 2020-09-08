@@ -9,12 +9,12 @@ export const AdherentShow = (props) => (
         <TextField label="Couriel" source="mail" type="email" />
         <TextField label="Tél" source="phone" />
         <DateField label="Adhérent depuis le " source="creationDate" />
-        <DateField label="Dernière mise à jour le" source="modificationDate" />
+        <DateField showTime label="Dernière mise à jour le" source="modificationDate" />
         <TextField label="numéro de la rue" source="address.streetNum" />
         <TextField label="rue" source="address.street" />
         <TextField label="ville" source="address.city" />
-        <TextField label="code postale" source="address.zip" />
-        <TextField label="supplément addresse" source="address.description" />
+        <TextField label="code postal" source="address.zip" />
+        <TextField label="complément d'addresse" source="address.description" />
     </SimpleShowLayout>
 </Show>
 )
