@@ -1,1 +1,1 @@
-/* Replace by environement */
+REACT_APP_API_URL = "localhost:8080"
