@@ -69,7 +69,8 @@ services:
         - "traefik.http.routers.assos-front-secured.rule=Host(`${FRONTEND_DN}`)"
         - "traefik.http.routers.assos-front-secured.entrypoints=assosuite-web-secured"
         - "traefik.http.routers.assos-front-secured.tls.certresolver=assosuite-challenge"
-
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
     networks:
         - assos-network-web
     environment:
