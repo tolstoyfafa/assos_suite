@@ -49,14 +49,25 @@ You'll have 4 running containers:
 	- mail
 
 ## Deployment
-### Docker compose deployment
-- install docker & docker-compose on your machine
-- copy the .env-sample, docker-compose-prod.yml to you deployment environment
-- rename .env-sample to .env and docker-compose-prod.yml to docker-compose.yml
-- mail server configuration: 
+#### Requirements:
+- A VM with docker and docker-compose installed
+- A Domain Name with 2 address records (A) [see](https://docs.ovh.com/gb/en/domains/web_hosting_how_to_edit_my_dns_zone/) in order to have 2 subdomains that will be used by the frontend and backend.
+
+Example:
+backend.organisation.com
+frontend.organisation.com
+
+#### Instructions:
+
+- copy `.env-prod-sample`, `docker-compose-prod.yml` `config-sample` to you deployment environment
+- rename `.env-prof-sample` to `.env` and `docker-compose-prod.yml` to `docker-compose.yml` and `config-sample` to `config` 
+> the config directory contains nginx server configuration that you can customize as you wish,  and `dynamic.yaml` file used to redirect http traefik to https
+**mail server configuration:**
 you can follow this documentation to use Gmail SMTP 
 https://support.cloudways.com/configure-gmail-smtp/
-- set your local settings in the .env (read the comments on the file)
+- set your local settings in the .env (read the comments on the [env-prod-sample](.env-prod-sample) file)
+
+> **NB**: To enable https we are using Let's encrypt see [documentation](https://docs.traefik.io/v1.7/user-guide/docker-and-lets-encrypt/)
 
 - execute this command:
 ```bash
@@ -71,10 +82,13 @@ Git
 
 ## Authors
 
-* **BORDJAH Fayçal** - *Initial work* - [fayçal Bordjah](https://github.com/tolstoyfafa)
+* **BORDJAH Fayçal** - [fayçal Bordjah](https://github.com/tolstoyfafa)
 
 See also the list of [contributors](https://github.com/tolstoyfafa/assos_suite/graphs/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgement 
+A special thanks to [Hiren PATEL](https://github.com/hirenpatelfr) and [Jackques ATACAN](https://github.com/atacanjacques?tab=followers) for they helps on the project

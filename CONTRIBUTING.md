@@ -22,17 +22,17 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 
 ### Git templates:
 1. **branch naminge**: You should respect this branch naming pattern
-    - master-{issue-number}-{subject}
+    - master-[issue-number]-[subject]
 2. **issues**:
-    - you can use provided issue templates according to the kind of issue
+    - you can use provided issues templates according to the kind of issue
 3. **pull requests**:
     - As issues template is automaticcly generated when you submit one
 
 ## Any contributions you make will be under the MIT Software License
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](LICENSE.md) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-## Report bugs using Github's [issues](https://github.com/faycalBordjah/dm-ci20-4/issues)
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/faycalBordjah/dm-ci20-4/issues/new); it's that easy!
+## Report bugs using Github's issues
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/tolstoyfafa/assos_suite/issues/new); it's that easy!
 > Use issues templates relating to what you need
 >
 ## Use a Consistent Coding Style
