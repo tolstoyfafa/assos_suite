@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.motus</groupId>
 	<artifactId>assosuite</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>assosuite</name>
 	<description>API AssoSuite is a suite plateforme to manage associations</description>
 
