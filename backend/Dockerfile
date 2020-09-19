@@ -1,11 +1,7 @@
-FROM maven:3.6.0 AS build
+FROM maven:3.6.0 
 MAINTAINER <AssosSuite@gmail.com>
-COPY src /build/src
-COPY pom.xml /build
-WORKDIR /build
-RUN mvn clean package -DskipTests=true
+WORKDIR /root
+COPY . /root
+COPY pom.xml /root
 EXPOSE 8080
-FROM adoptopenjdk/openjdk11:latest
-COPY --from=build /build/target/*.jar /usr/local/lib/assosuite.jar
-WORKDIR /usr/app
-ENTRYPOINT ["java","-jar","/usr/local/lib/assosuite.jar"]
+CMD ["mvn",'spring-boot:run","-Dspring-boot.run.jvmArguments="-Dspring.profiles.active=dev"']
