@@ -1,6 +1,6 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 
-version: '3.7'
+version: '3.8'
 
 # Define services
 services:
@@ -28,12 +28,11 @@ services:
         context: ./frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
         dockerfile: Dockerfile
       ports:
-        - "9090:80" # Map the exposed port 80 on the container to port 9090 on the host machine
-      restart: always
-      depends_on:
-        - backend
+        - "9090:3000" # Map the exposed port 80 on the container to port 9090 on the host machine
       networks:
-        - frontend  
+        - frontend
+      volumes:
+        - ./frontend:/usr/src/app
    
   # Database Service (Mysql)
   mongo:
