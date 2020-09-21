@@ -4,23 +4,19 @@ version: '3.8'
 services:
   backend_dev:
       build:
-        context: ./backend # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+        context: ./backend
         dockerfile: Dockerfile
       ports:
-        - "8081:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+        - "8081:8080"
       volumes:
         - ./backend:/root
 
-   
-     # Frontend Service 
   frontend_dev:
       build:
-        context: ./frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
+        context: ./frontend
         dockerfile: Dockerfile
       ports:
-        - "9090:3000" # Map the exposed port 80 on the container to port 9090 on the host machine
-      networks:
-        - frontend
+        - "9090:3000"
       volumes:
         - ./frontend:/usr/src/app
    
@@ -45,10 +41,4 @@ services:
         #     - ./config/:/tmp/docker-mailserver/
         #
     
-volumes:
-    db-data:
 
-# Networks to be created to facilitate communication between containers
-networks:
-  backend:
-  frontend:    
