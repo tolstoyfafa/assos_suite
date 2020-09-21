@@ -1,12 +1,8 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 
 version: '3.8'
-
-# Define services
 services:
-  # App backend service
   backend_dev:
-       # Configuration for building the docker image for the backend service
       build:
         context: ./backend # Use an image built from the specified dockerfile in the `polling-app-server` directory.
         dockerfile: Dockerfile
@@ -28,28 +24,26 @@ services:
       volumes:
         - ./frontend:/usr/src/app
    
-  # Database Service (Mysql)
   mongo:
     image: mongo
     ports:
       - "27017:27017"
-    restart: always
-   #networks:
-    #  - backend  
-
-  mail:
-    image: tvial/docker-mailserver:latest
-    hostname: ${HOSTNAME}
-    domainname: ${DOMAINNAME}
-    ports:
-     - "20025:25"
-     - "20465:465"
-     - "20143:143"
-     - "20587:587"
-     - "20993:993"
     volumes:
-     - ./config/:/tmp/docker-mailserver/
+      - ./data/db:/data/db
 
+        #  mail:
+        #    image: tvial/docker-mailserver:latest
+        #    hostname: localhost
+        #    domainname: assosuite.org
+        #    ports:
+        #     - "20025:25"
+        #     - "20465:465"
+        #     - "20143:143"
+        #     - "20587:587"
+        #     - "20993:993"
+        #    volumes:
+        #     - ./config/:/tmp/docker-mailserver/
+        #
     
 volumes:
     db-data:
