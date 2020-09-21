@@ -1,1 +1,2 @@
-export const BACK_URL = "https://" + window.REACT_APP_API_URL + "/assosuite/api/v1"
+export const BACK_URL = process.env.NODE_ENV === 'development'? "http://" + process.env.REACT_APP_HOST + process.env.REACT_APP_PORT + "/assosuite/api/v1"
+: "https://" + window.REACT_APP_API_URL + "/assosuite/api/v1"

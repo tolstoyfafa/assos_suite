@@ -18,4 +18,8 @@ the api is available by default on http://localhost:8080
 - remove the target directory that contains the jars to get a clean env 
 
 ### Swagger API
-To get the API documentation you nee to run the application with `mvn spring-boot run` than you can follow [](http://localhost:8080/swagger-ui.html)
+
+To get the API documentation you nee to run the application with `mvn spring-boot run` than you can follow this  [link](http://localhost:8080/swagger-ui.html)
+
+### Configuration
+all available configuration for devolepment env of backend are [here](./src/main/resources/application-dev.properties) you can follow available comments there to better understanding
