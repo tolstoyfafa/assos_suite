@@ -43,7 +43,6 @@ services:
       - ./config/:/tmp/docker-mailserver/
     env_file:
       - .env
-      - env-mailserver
     cap_add:
       - NET_ADMIN
       - SYS_PTRACE
