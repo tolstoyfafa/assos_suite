@@ -19,7 +19,7 @@ services:
         - "9090:3000"
       volumes:
         - ./frontend:/usr/src/app
-        - ./frontend/node_modules:/usr/src/app/node_modules
+        - /usr/src/app/node_modules
    
   mongo:
     image: mongo
