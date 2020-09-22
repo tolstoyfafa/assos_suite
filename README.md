@@ -2,7 +2,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 ![publish docker images](https://github.com/tolstoyfafa/assos_suite/workflows/publish%20backend%20&%20frontend%20docker%20images/badge.svg)  
 ![Backend CI](https://github.com/tolstoyfafa/assos_suite/workflows/BackendCI/badge.svg)  
-[![Github Stars][gh_stars]][repo]
+[![GitHub forks](https://img.shields.io/github/forks/Naereen/StrapDown.js.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/network)  
+[![GitHub stars](https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/stargazers)  
+[![GitHub watchers](https://img.shields.io/github/watchers/Naereen/StrapDown.js.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/watchers)  
+[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/graphs/contributors)  
+[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/issues)  
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/releases)  
+[![GitHub tag](https://img.shields.io/github/tag/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/tags)  
+
 # AssosSuite
 
 AssoSuite is a complete free, open source solution to manage assosiations.
@@ -95,7 +102,7 @@ Git
 ## Authors
 
 * **BORDJAH Fayçal** - [fayçal Bordjah](https://github.com/tolstoyfafa)
-* **EL HITARY Meraouane** - [Merouane El hitary](https://github.com/MarOuanEElHiTaRY)
+* **EL HITARY Marouane** - [Marouane El hitary](https://github.com/MarOuanEElHiTaRY)
 
 See also the list of [contributors](https://github.com/tolstoyfafa/assos_suite/graphs/contributors) who participated in this project.
 
