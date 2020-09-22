@@ -3,7 +3,7 @@
 ![publish docker images](https://github.com/tolstoyfafa/assos_suite/workflows/publish%20backend%20&%20frontend%20docker%20images/badge.svg)  
 ![Backend CI](https://github.com/tolstoyfafa/assos_suite/workflows/BackendCI/badge.svg)   
   
-[![GitHub issues](https://img.shields.io/github/issues/tolstoyfafa/assos_suite)](https://GitHub.com/Naereen/StrapDown.js/issues/)  
+[![GitHub issues](https://img.shields.io/github/issues/tolstoyfafa/assos_suite)](https://github.com/tolstoyfafa/assos_suite/issues)  
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/tolstoyfafa/assos_suite)](https://github.com/tolstoyfafa/assos_suite/issues?q=is%3Aissue+is%3Aclosed)     
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/releases)      
 [![GitHub tag](https://img.shields.io/github/tag/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/tags)  
@@ -11,7 +11,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/network)  
 [![GitHub stars](https://img.shields.io/github/stars/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/stargazers)  
 [![GitHub watchers](https://img.shields.io/github/watchers/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/watchers)  
-![Tweeting](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2FAssoSuite)    
+[![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2FAssoSuite)](https://twitter.com/AssoSuite)  
 [![Website shields.io](https://img.shields.io/website?up_color=green&up_message=URL&url=https%3A%2F%2Fadmin.assosuite.ovh%2F)](https://admin.assosuite.ovh)  
 
 # AssoSuite
