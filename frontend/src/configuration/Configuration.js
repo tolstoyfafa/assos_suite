@@ -74,9 +74,9 @@ const Configuration = () => {
     return (
         <Form
             onSubmit={handleSubmit}
-            validate={}
+            validate={console.log("Validate")}
             render={({ handleSubmit }) => (
-                <form onSubmit={} noValidate>
+                <form onSubmit={console.log("on submit")} noValidate>
                     <div className={classes.main}>
                         <Card className={classes.card}>
                             <div className={classes.avatar}>
