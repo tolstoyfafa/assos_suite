@@ -1,14 +1,18 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 ![publish docker images](https://github.com/tolstoyfafa/assos_suite/workflows/publish%20backend%20&%20frontend%20docker%20images/badge.svg)  
-![Backend CI](https://github.com/tolstoyfafa/assos_suite/workflows/BackendCI/badge.svg)  
-[![GitHub forks](https://img.shields.io/github/forks/Naereen/StrapDown.js.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/network)  
-[![GitHub stars](https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/stargazers)  
-[![GitHub watchers](https://img.shields.io/github/watchers/Naereen/StrapDown.js.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/tolstoyfafa/assos_suite/watchers)  
-[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/graphs/contributors)  
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/issues)  
-[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/releases)  
+![Backend CI](https://github.com/tolstoyfafa/assos_suite/workflows/BackendCI/badge.svg)   
+  
+[![GitHub issues](https://img.shields.io/github/issues/tolstoyfafa/assos_suite)](https://GitHub.com/Naereen/StrapDown.js/issues/)  
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/tolstoyfafa/assos_suite)](https://github.com/tolstoyfafa/assos_suite/issues?q=is%3Aissue+is%3Aclosed)     
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/releases)      
 [![GitHub tag](https://img.shields.io/github/tag/Naereen/StrapDown.js.svg)](https://github.com/tolstoyfafa/assos_suite/tags)  
+
+[![GitHub forks](https://img.shields.io/github/forks/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/network)  
+[![GitHub stars](https://img.shields.io/github/stars/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/stargazers)  
+[![GitHub watchers](https://img.shields.io/github/watchers/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/watchers)  
+![Tweeting](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2FAssoSuite)    
+[![Website shields.io](https://img.shields.io/website?up_color=green&up_message=URL&url=https%3A%2F%2Fadmin.assosuite.ovh%2F)](http://shields.io/)  
 
 # AssosSuite
 
@@ -36,7 +40,7 @@ What things you need to install the software and how to install them
 - yarn v1.2.5
 - Openjdk 11
 - maven v3.6
-- mongo 4.2
+- mongo 4.2  
 
 Assosuite contains 2 components `backend` and `frontend`
 
