@@ -79,39 +79,36 @@ const Configuration = () => {
                 <form onSubmit={} noValidate>
                     <div className={classes.main}>
                         <Card className={classes.card}>
-                            <div >
-                                <Avatar >
+                            <div className={classes.avatar}>
+                                <Avatar className={classes.icon}>
                                     <LockIcon />
                                 </Avatar>
                             </div>
-                            <div >
+                            <div className={classes.hint}>
                                 Changer mot de passe
                             </div>
-                            <div >
-                                <div >
+                            <div className={classes.form}>
+                                <div className={classes.input}>
                                     <Field
                                         autoFocus
                                         name="actual"
-                                        // @ts-ignore
                                         component={renderInput}
                                         label="mot de passe actuel"
                                         disabled={false}
                                     />
                                 </div>
-                                <div >
+                                <div className={classes.input}>
                                     <Field
                                         autoFocus
                                         name="new_pass"
-                                        // @ts-ignore
                                         component={renderInput}
                                         label="nouveau mot de passe"
                                         disabled={false}
                                     />
                                 </div>
-                                <div >
+                                <div className={classes.input}>
                                     <Field
                                         name="conf_pass"
-                                        // @ts-ignore
                                         component={renderInput}
                                         label="confirmation mot de passe"
                                         type="password"
@@ -119,7 +116,7 @@ const Configuration = () => {
                                     />
                                 </div>
                             </div>
-                            <CardActions >
+                            <CardActions className={classes.actions}>
                                 <Button
                                     variant="contained"
                                     type="submit"
