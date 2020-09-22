@@ -11,6 +11,8 @@ import { httpClient } from "./authorization";
 import { AdherentCreate } from "./AdherentCreate";
 import {AdherentEdit} from './AdherentEdit'
 import { AdherentShow } from "./AdhrentShow";
+import customRoutes from './routes';
+import Layout from "./layout/Layout";
 
 
 const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
@@ -18,6 +20,8 @@ const App = () => (
   <Admin title = "AssoSuite"
         dataProvider={dataProvider(BACK_URL, httpClient)}
         authProvider={authProvider}
+        customRoutes={customRoutes}
+        layout={Layout}
         i18nProvider={i18nProvider} >
     <Resource 
         name="adherents"
