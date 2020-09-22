@@ -4,4 +4,4 @@ WORKDIR /root
 COPY . /root
 COPY pom.xml /root
 EXPOSE 8080
-CMD ["mvn",'spring-boot:run","-Dspring-boot.run.jvmArguments="-Dspring.profiles.active=dev"']
+CMD ["mvn","spring-boot:run","-Dspring-boot.run.profiles=dev"]
