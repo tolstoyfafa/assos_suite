@@ -12,9 +12,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/stargazers)  
 [![GitHub watchers](https://img.shields.io/github/watchers/tolstoyfafa/assos_suite?style=social)](https://github.com/tolstoyfafa/assos_suite/watchers)  
 ![Tweeting](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2FAssoSuite)    
-[![Website shields.io](https://img.shields.io/website?up_color=green&up_message=URL&url=https%3A%2F%2Fadmin.assosuite.ovh%2F)](http://shields.io/)  
+[![Website shields.io](https://img.shields.io/website?up_color=green&up_message=URL&url=https%3A%2F%2Fadmin.assosuite.ovh%2F)](https://admin.assosuite.ovh)  
 
-# AssosSuite
+# AssoSuite
 
 AssoSuite is a complete free, open source solution to manage assosiations.
 ### Main features:
