@@ -12,7 +12,6 @@ export default {
                 password: opts.password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
-        console.log(request.body)
         return fetch(request)
             .then(response => {
 
@@ -26,7 +25,6 @@ export default {
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('permissions', decodedToken.roles[0].authority);
-                console.log(decodedToken.roles)
             });
     },
     logout: () => {
@@ -35,7 +33,6 @@ export default {
         return Promise.resolve();
     },
     checkError: error => {
-        console.log(error)
     },
     checkAuth: () => {
         return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();

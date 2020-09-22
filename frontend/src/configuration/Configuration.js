@@ -69,17 +69,16 @@ const { Form } = withTypes();
 const Configuration = () => {
     const classes = useStyles();
     const handleSubmit = (auth) => {
-        console.log("object")
     };
 
     return (
         <Form
             onSubmit={handleSubmit}
-            validate={console.log("validate")}
+            validate={}
             render={({ handleSubmit }) => (
-                <form onSubmit={console.log("test")} noValidate>
+                <form onSubmit={} noValidate>
                     <div className={classes.main}>
-                        <Card>
+                        <Card className={classes.card}>
                             <div >
                                 <Avatar >
                                     <LockIcon />
