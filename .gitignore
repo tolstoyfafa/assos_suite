@@ -1,3 +1,5 @@
 tasks*
 .gitmessage
 .env
+backend/.m2
+data
