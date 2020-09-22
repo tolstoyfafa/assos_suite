@@ -52,6 +52,7 @@ To get a development env running you should follow each component documentation.
 If you want to use Docker to get a developpement environment:
 
 - in assosuite root directory run 
+- copy .env-dev.sample and rename it to .env (change it depending on your environement) 
 ```bash
 docker-compose up -d
 ```
