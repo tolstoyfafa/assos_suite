@@ -17,7 +17,9 @@ import Layout from "./layout/Layout";
 import Welcome from "./dashboard/Welcome";
 import { GroupCreate } from "./GroupCreate";
 import { GroupEdit } from "./GroupEdit";
-import {GroupShow} from "./GroupShow"
+import {GroupShow} from "./GroupShow";
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import GroupWorkIcon from '@material-ui/icons/GroupWork';
 
 
 const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
@@ -35,7 +37,9 @@ const App = () => (
         list={AdherentList}
         create={AdherentCreate} 
         edit={AdherentEdit}
-        show={AdherentShow} 
+        show={AdherentShow}
+        icon = {SupervisorAccountIcon}
+        options={{ label: 'Mes Adhérents' }}
         >
     </Resource>
     <Resource 
@@ -43,7 +47,9 @@ const App = () => (
         list={GroupList}
         create={GroupCreate}
         edit={GroupEdit}
-        show={GroupShow} 
+        show={GroupShow}
+        icon = {GroupWorkIcon}
+        options={{ label: 'Mes Groupes' }}
     >
     </Resource>
   </Admin>
