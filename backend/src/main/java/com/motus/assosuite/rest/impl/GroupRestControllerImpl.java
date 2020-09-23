@@ -83,7 +83,8 @@ public class GroupRestControllerImpl implements GroupRestController {
 	@DeleteMapping(path = "/{uuid}")
 	@ApiOperation(value = "Endpoint to Delete group only for admin SUPERADMIN")
 	@Override
-	public ResponseEntity<Group> delete(String uuid) {
+	public ResponseEntity<Group> delete(@PathVariable String uuid) {
+		service.delete(uuid);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
