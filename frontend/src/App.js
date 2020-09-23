@@ -15,6 +15,9 @@ import { AdherentShow } from "./AdhrentShow";
 import customRoutes from './routes';
 import Layout from "./layout/Layout";
 import Welcome from "./configuration/dashboard/Welcome";
+import { GroupCreate } from "./GroupCreate";
+import { GroupEdit } from "./GroupEdit";
+import {GroupShow} from "./GroupShow"
 
 
 const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
@@ -35,8 +38,14 @@ const App = () => (
         show={AdherentShow} 
         >
     </Resource>
-    <Resource name="groups"
-    list={GroupList}/>
+    <Resource 
+        name="groups"
+        list={GroupList}
+        create={GroupCreate}
+        edit={GroupEdit}
+        show={GroupShow} 
+    >
+    </Resource>
   </Admin>
 
 )

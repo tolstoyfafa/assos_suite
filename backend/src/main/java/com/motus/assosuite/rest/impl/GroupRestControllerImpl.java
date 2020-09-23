@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -75,7 +76,7 @@ public class GroupRestControllerImpl implements GroupRestController {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ApiOperation(value = "Endpoint to full Update of a group only for admin SUPERADMIN")
 	@Override
-	public ResponseEntity<Group> udpate(@RequestBody Group group,@RequestParam String uuid) {
+	public ResponseEntity<Group> udpate(@RequestBody Group group,@PathVariable String uuid) {
 		return new ResponseEntity<Group>(service.update(group, uuid), HttpStatus.OK);
 	}
 

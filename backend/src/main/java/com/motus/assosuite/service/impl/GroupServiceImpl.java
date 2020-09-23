@@ -26,9 +26,9 @@ public class GroupServiceImpl implements GroupService {
 
 	@Override
 	public Group create(Group group) throws BusinessException {
-		if (!(repository.findByName() == null)) {
-			throw new BusinessException("Group with this name already exists", AssosBusinessErrorCode.GROUP_EXISTS);
-		}
+//		if (!(repository.findByName() == null)) {
+//			throw new BusinessException("Group with this name already exists", AssosBusinessErrorCode.GROUP_EXISTS);
+//		}
 		return repository.save(group);
 	}
 

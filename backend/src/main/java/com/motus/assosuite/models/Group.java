@@ -31,9 +31,6 @@ public class Group {
 	
 	private List<Adherent> members;
 
-	public Group() {
-	}
-	
 	public Group(String name, List<Adherent> members) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
