@@ -72,7 +72,7 @@ public class AdherentRestControllerImpl implements AdherentRestController {
 		List<Adherent> adherents = service.findAll(pageNum, pageSize,order, field);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Access-Control-Expose-Headers", "content-range");
-		String size = String.valueOf(service.findAll().size());
+		String size = service.findAll().isEmpty() ? "0" : String.valueOf(service.findAll().size());
 		responseHeaders.add("content-range", size);
 		return new ResponseEntity<List<Adherent>>(adherents, responseHeaders,HttpStatus.OK);
 	}
