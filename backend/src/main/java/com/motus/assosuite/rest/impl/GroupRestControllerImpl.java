@@ -51,7 +51,7 @@ public class GroupRestControllerImpl implements GroupRestController {
 		List<Group> groups = service.findAll(pageNum, pageSize,order, field);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Access-Control-Expose-Headers", "content-range");
-		String size = String.valueOf(service.findAll().size());
+		String size = service.findAll().isEmpty() ? "0" : String.valueOf(service.findAll().size());
 		responseHeaders.add("content-range", size);
 		return new ResponseEntity<List<Group>>(groups, responseHeaders,HttpStatus.OK);
 	}
