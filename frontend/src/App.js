@@ -13,6 +13,7 @@ import {AdherentEdit} from './AdherentEdit'
 import { AdherentShow } from "./AdhrentShow";
 import customRoutes from './routes';
 import Layout from "./layout/Layout";
+import Welcome from "./configuration/dashboard/Welcome";
 
 
 const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
@@ -21,6 +22,7 @@ const App = () => (
         dataProvider={dataProvider(BACK_URL, httpClient)}
         authProvider={authProvider}
         customRoutes={customRoutes}
+        dashboard={Welcome}
         layout={Layout}
         i18nProvider={i18nProvider} >
     <Resource 
