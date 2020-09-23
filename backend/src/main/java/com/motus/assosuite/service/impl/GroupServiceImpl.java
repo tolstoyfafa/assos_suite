@@ -1,5 +1,11 @@
 package com.motus.assosuite.service.impl;
 
+import java.util.List;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.motus.assosuite.api.exceptions.BusinessException;
@@ -53,6 +59,27 @@ public class GroupServiceImpl implements GroupService {
 			throw new BusinessException("No Group has been found", AssosBusinessErrorCode.ADHERENT_NOT_FOUND);
 		}
 		repository.delete(found);
+	}
+	
+	@Override
+	public List<Group> findAll(Integer pageNum, Integer pageSize, String order, String field) {
+		pageNum = pageNum - 1;
+		List<Group> fullList = repository.findAll();
+		if (pageNum != null & pageSize != null) {
+			Pageable paging = PageRequest.of(pageNum, pageSize);
+			if (order.equals("DESC")) {
+				paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.DESC, field));
+			} else {
+				paging = PageRequest.of(pageNum, pageSize, Sort.by(Direction.ASC, field));
+			}
+			return repository.findAll(paging).toList();
+		}
+		return fullList;
+	}
+
+	@Override
+	public List<Group> findAll() {
+		return repository.findAll();
 	}
 
 }
