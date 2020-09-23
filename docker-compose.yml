@@ -6,6 +6,8 @@ services:
       build:
         context: ./backend
         dockerfile: Dockerfile
+      depends_on:
+        - mongo
       ports:
         - "8081:8080"
       volumes:
