@@ -65,6 +65,21 @@ const renderInput = ({
     />
 );
 
+const validate = (values) => {
+    const errors = {};
+    if (!values.actual) {
+        errors.oldPassword = "mot de passe invalide";
+    }
+    if (!values.newPass) {
+        errors.password = "invalide";
+    }
+    if (!values.confPass) {
+        errors.confPassword = "invalide";
+    }
+    return errors;
+};
+
+
 const { Form } = withTypes();
 const Configuration = () => {
     const classes = useStyles();
@@ -74,7 +89,7 @@ const Configuration = () => {
     return (
         <Form
             onSubmit={handleSubmit}
-            validate={console.log("Validate")}
+            validate={validate}
             render={({ handleSubmit }) => (
                 <form onSubmit={console.log("on submit")} noValidate>
                     <div className={classes.main}>
@@ -100,7 +115,7 @@ const Configuration = () => {
                                 <div className={classes.input}>
                                     <Field
                                         autoFocus
-                                        name="new_pass"
+                                        name="newPass"
                                         component={renderInput}
                                         label="nouveau mot de passe"
                                         disabled={false}
@@ -108,7 +123,7 @@ const Configuration = () => {
                                 </div>
                                 <div className={classes.input}>
                                     <Field
-                                        name="conf_pass"
+                                        name="confPass"
                                         component={renderInput}
                                         label="confirmation mot de passe"
                                         type="password"
