@@ -5,6 +5,7 @@ import frenchMessages from 'ra-language-french';
 import dataProvider from './dataProvider'
 import authProvider from './authProvider'
 import {AdherentList} from './AdherentList'
+import {GroupList} from './GroupList'
 import "./App.css";
 import {BACK_URL}  from "./constants";
 import { httpClient } from "./authorization";
@@ -34,6 +35,8 @@ const App = () => (
         show={AdherentShow} 
         >
     </Resource>
+    <Resource name="groups"
+    list={GroupList}/>
   </Admin>
 
 )
