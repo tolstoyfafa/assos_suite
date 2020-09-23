@@ -14,7 +14,7 @@ import {AdherentEdit} from './AdherentEdit'
 import { AdherentShow } from "./AdhrentShow";
 import customRoutes from './routes';
 import Layout from "./layout/Layout";
-import Welcome from "./configuration/dashboard/Welcome";
+import Welcome from "./dashboard/Welcome";
 import { GroupCreate } from "./GroupCreate";
 import { GroupEdit } from "./GroupEdit";
 import {GroupShow} from "./GroupShow"
