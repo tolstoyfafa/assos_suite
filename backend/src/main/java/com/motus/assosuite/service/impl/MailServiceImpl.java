@@ -24,7 +24,7 @@ public class MailServiceImpl implements MailService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(adhrentMail);
         msg.setSubject(ADD_SUBJECT_MAIL);
-        msg.setText("AZUUUUUUUUUUUUUUUUUL      ==== Bonjour, vous venez d'être ajouté à une association");
+        msg.setText("Bonjour, Vous venez d'adhérer à une association. Cordialement");
         javaMailSender.send(msg);
 	}
 
