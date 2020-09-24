@@ -1,6 +1,6 @@
 {
   "name": "assosuite",
-  "version": "1.0.1-snapshot",
+  "version": "1.0.2-snapshot",
   "private": true,
   "dependencies": {
     "@material-ui/styles": "^4.10.0",
