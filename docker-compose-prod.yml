@@ -1,5 +1,5 @@
 # docker-compose file used to deploy assosuite in a prodution environment
-#   TODO: add traefik, networks management
+# do not use it in a development environment
 version: '3.8'
 
 services:
@@ -43,7 +43,6 @@ services:
       - "traefik.http.middlewares.back-headers.headers.accesscontrolallowheaders=*"
       - "traefik.http.middlewares.back-headers.headers.accesscontrolallowcredentials=true"
       - "traefik.http.middlewares.back-headers.headers.accesscontrolalloworiginlist=*"
-        #      - "traefik.http.middlewares.back-headers.headers.customresponseheaders=Access-Control-Allow-Origin:*"
       - "traefik.http.routers.assos-back-secured.rule=Host(`${BACKEND_DN}`)"
       - "traefik.http.routers.assos-back-secured.entrypoints=assosuite-web-secured"
       - "traefik.http.routers.assos-back-secured.tls.certresolver=assosuite-challenge"
@@ -83,6 +82,8 @@ services:
       - backend-network
     labels:
       - "treafik.enable=false"
+    volumes:
+      - ./data/db:/data/db
 
 networks:
   assos-network-web:

@@ -1,4 +1,4 @@
-name: publish backend & frontend docker images
+name: publish docker images
 on:
   push:
     tags:
